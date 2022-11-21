@@ -209,4 +209,4 @@ INSERT INTO `electrical_physical` (`product_code`, `Ethernet`, `Alarm In/Out`, `
 ('THOS-2F3I-I68',	'RJ45',	'1 IN; 1 OUT',	'',	'',	'12 VDC, 0.8 A, max. 10 W PoE (802.3af, 36V to 57V), 0.3 A to 0.2 A, max. 12.5 W',	'',	'',	'316L Stainless steel',	'-40 to +60 deg C ',	'95% or less (non-condensing)',	'',	'',	'',	'',	'',	'IP68 ',	'FCC, CE, IC, KC, UL, CB',	'',	'ATEX: II 2 G D Ex db IIC T6 Gb/Ex tb IIIC T80°C Db IP68 IECEx: Ex db IIC T6 Gb/Ex tb IIIC T80°C Db IP68 For explosive gas atmospheres, the maximum surface temperature is 85°C; For flammable dust atmospheres, the maximum surface temperature is 80°C; IIC: for explosive gas atmospheres other than mines susceptible to firedamp; For explosive gas mixture atmospheres: Zone 1, Zone 2, Zone 21, Zone 22.',	'2.5',	'138dia × 123.4 mm');
 
 -- 2022-11-14 16:32:11
-Save;
+-- Save;
