@@ -1,0 +1,22 @@
+<!-- THIS WORKS -->
+<div class="product-list-wrapper">
+	<div class="list-title-wrapper">
+		<h3 class="list-title">Our Range of CCTV Cameras</h3>
+	</div>
+	<h5 class="list-sub-heading"></h5>
+	<div class="list-container">
+		<ul class="product-list"> <% %>
+				<% data.forEach(function(el){ %>
+					<li class="list-item">
+						<a href="<%= `/product-page/${el.product_code}` %>">
+							<div class="product-list-image-wrapper">
+								<img class="product-list-image" src="<%=`${el.image_link}` %>" alt="">
+							</div>
+							<br>
+							<%= el.product_name %>
+						</a>
+					</li>
+					<% }) %>
+		</ul>
+	</div>
+</div>

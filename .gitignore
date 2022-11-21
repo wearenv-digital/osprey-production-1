@@ -1,0 +1,19 @@
+# Defined Ignore
+.env
+.env*
+
+./db/
+./db/*
+db/
+
+src/sql/mysql*
+src/sql/mysql
+src/sql/mysql/*
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+

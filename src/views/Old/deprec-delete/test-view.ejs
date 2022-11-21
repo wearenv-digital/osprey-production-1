@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>test-view</title>
+	</head>
+	<body>
+		<h1>test view</h1>
+		<div class="test-section">
+			<h4>data is...</h4>
+			<p>
+				<br>
+			</p>
+		</div>
+		<div>
+			<ul>
+				<% data.features.forEach(function(item){ %>
+					<li>
+						<%= item %>
+					</li>
+					<% }); %>
+			</ul>
+		</div>
+	</body>
+</html>
+<div class="bullet-wrapper">
+	<ul role="list">
+		<% data.features.forEach(element=> { %> <li>
+				<%= element %>
+			</li>
+			<% }) %>
+	</ul>
+</div>
+<% data.features.forEach(element=> { %> <li>
+		<%= element %>
+	</li>
+	<% }) %>
