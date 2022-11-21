@@ -1,7 +1,6 @@
 const express = require('express');
 const controllers = require('../controller/controllers');
 var breadcrumbs = require('../controller/breadcrumbs');
-const breadcrumbSplit = require('../controller/breadcrumbSplit');
 const router = express.Router();
 
 router.use(function timeLog(req, res, next) {
