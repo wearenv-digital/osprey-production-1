@@ -1,0 +1,16 @@
+<nav class="breadcrumb-product-page">
+	<% if(breadcrumbs){ %>
+		<% for(let i=0; i<breadcrumbs.length; i++){ %>
+			<% if(i==(breadcrumbs.length - 1)){ %>
+				<span class="breadcrumb-item active">
+					<%= breadcrumbs[i].name %>
+				</span>
+				<%} else {%>
+					<a class="breadcrumb-item" href="<%=`//${breadcrumbs[i].url}` %>">
+						<% console.log(breadcrumbs[i].url) %>
+							<%= breadcrumbs[i].name %>
+					</a>
+					<% } %>
+						<% } %>
+							<% } %>
+</nav>

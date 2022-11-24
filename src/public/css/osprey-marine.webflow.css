@@ -8,6 +8,33 @@
 	}
 }
 
+/* Form Styling */
+
+:root {
+	--error-color: #dc3545;
+	--success-color: #28a745;
+	--warning-color: #ffc107;
+}
+
+.form-field input:focus {
+	outline: none;
+}
+
+.form-field.error input {
+	border-color: var(--error-color);
+}
+
+.form-field.success input {
+	border-color: var(--success-color);
+}
+
+.form-field small {
+	color: var(--error-color);
+}
+
+
+
+
 /* Product Page Styling */
 
 
@@ -4227,8 +4254,11 @@ td.val-data {
 .form-label,
 .form-style,
 .form-style.text-area {
-	font-family: neuropol, sans-serif
+	font-family: Avenir, sans-serif;
+	font-weight: 500;
+	color: #18394c;
 }
+
 
 .form-label {
 	margin-bottom: 2px;
@@ -4962,11 +4992,11 @@ img.product-list-image {}
 	min-width: 100%
 }
 
-.tab-link-tab-1 {
+/* .tab-link-tab-1 {
 	border-style: solid;
 	border-width: 1px;
 	border-color: #093273
-}
+} */
 
 .tab-link-tab-1,
 .tab-link-tab-1.w--current {
@@ -4985,9 +5015,9 @@ img.product-list-image {}
 
 .tabspec {
 	min-width: 20%;
-	border-style: solid;
+	/* border-style: solid;
 	border-width: 1px;
-	border-color: #1b70a9;
+	border-color: #1b70a9; */
 	background-color: #fff
 }
 
@@ -5008,9 +5038,9 @@ img.product-list-image {}
 .tabimg,
 .tabimg.w--current {
 	min-width: 20%;
-	border-style: solid;
+	/* border-style: solid;
 	border-width: 1px;
-	border-color: #093273;
+	border-color: #093273; */
 	background-color: transparent
 }
 
@@ -5021,11 +5051,11 @@ img.product-list-image {}
 .tablinks,
 .tabquote,
 .tabrelated {
-	background-color: #1b70a9
+	background-color: #093273
 }
 
 .tabtxt {
-	color: #1b70a9;
+	color: #093273;
 	font-weight: 400;
 	letter-spacing: .5px;
 	text-transform: none
@@ -5215,9 +5245,9 @@ img.product-list-image {}
 .tab-link-quote,
 .tab-link-tab-2 {
 	min-width: 20%;
-	border-style: solid;
+	/* border-style: solid;
 	border-width: 1px;
-	border-color: #093273
+	border-color: #093273 */
 }
 
 .tab-link-quote,
@@ -6121,7 +6151,10 @@ input.search-input:focus-visible {
 	max-width: 30px
 }
 
-.div-block-61 {
+.div-block-61,
+.div-block-61.pdf,
+.div-block-61.phone,
+.div-block-61.email {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -6139,28 +6172,17 @@ input.search-input:focus-visible {
 	-webkit-align-items: center;
 	-ms-flex-align: center;
 	align-items: center;
-	border-radius: 30px;
-	background-color: orange;
+	/* border-radius: 5px; */
+	/* border: 1px solid #093273; */
+	background: #c8c8c8;
 	color: #093273
 }
 
-.div-block-61.pdf {
-	background-color: #2dc937
-}
-
-.div-block-61.email {
-	background-color: orange;
-	color: #2c7309
-}
-
-.div-block-61.phone {
-	background-color: #c33
-}
 
 .heading-13 {
 	padding-right: 10px;
 	padding-left: 10px;
-	color: #fff;
+	color: #093273;
 	font-weight: 400
 }
 
@@ -6209,7 +6231,7 @@ input.search-input:focus-visible {
 	display: -ms-flexbox;
 	display: flex;
 	min-height: 200px;
-	padding: 15px 80px;
+	padding: 15px 48px;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
@@ -6243,6 +6265,13 @@ input.search-input:focus-visible {
 	text-align: left
 }
 
+.w-tab-link {
+	margin: 0 2px !important;
+	/* border: 1px solid #093273; */
+	/* border-radius: 5px; */
+
+}
+
 .div-block-63 {
 	display: block
 }
@@ -6260,7 +6289,6 @@ input.search-input:focus-visible {
 .image-bullet-wrapper {
 	width: 100%;
 	padding-top: 20px;
-	padding-right: 10px;
 	padding-bottom: 20px;
 	-webkit-box-pack: start;
 	-webkit-justify-content: flex-start;
@@ -7873,10 +7901,47 @@ nav.breadcrumb {
 	font-size: 18px;
 }
 
+.breadcrumb-item-contact.active {
+	font-weight: 700 !important;
+}
+
+.breadcrumb-contact-us>.breadcrumb-item {
+	color: #fff !important;
+}
+
+
+nav.breadcrumb-contact {
+	color: #fff !important;
+}
+
 nav.breadcrumb-product-page {
 	position: relative;
 	top: 20px;
 	left: 20px;
+}
+
+/* Form Styling */
+
+:root {
+	--error-color: #dc3545;
+	--success-color: #28a745;
+	--warning-color: #ffc107;
+}
+
+.form-field input:focus {
+	outline: none;
+}
+
+.form-field.error input {
+	border-color: var(--error-color);
+}
+
+.form-field.success input {
+	border-color: var(--success-color);
+}
+
+.form-field small {
+	color: var(--error-color);
 }
 
 .form-row {
@@ -7926,7 +7991,15 @@ input.upload-input {
 	min-width: 200px;
 }
 
-
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
 
 input[type="file"] {
 	position: absolute;
@@ -7940,7 +8013,6 @@ input[type="file"] {
 	border: 0;
 }
 
-label.custom-upload {}
 
 label.custom-upload {
 
@@ -7959,5 +8031,14 @@ input.submit-btn {
 	background-color: #1b70a9;
 	outline: none;
 	border: none !important;
+
+}
+
+.link-block-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+
+	max-width: 100%;
 
 }

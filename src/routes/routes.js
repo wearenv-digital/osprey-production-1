@@ -359,8 +359,8 @@ router.get(
 	}
 );
 
-router.get('/contact-us', (req, res) => {
-	res.render('contact-us');
+router.get('/contact-us', breadcrumbs.Middleware(), (req, res) => {
+	res.render('contact', { breadcrumbs: req.breadcrumbs});
 });
 
 router.get('/layout', (req, res) => {

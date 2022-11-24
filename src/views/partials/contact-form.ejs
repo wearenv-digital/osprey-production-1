@@ -1,70 +1,53 @@
-<div class="form-container">
-	<div class="form-wrapper">
-		<form action="" class="osprey-form">
-			<label for="name" class="email-label">Name</label>
-			<input type="text" class="name-input" id="name" value="Name">
-			<label for="number">Contact number</label>
-			<input type="tel" class="telephone-input" id="telephone">
-			<label for="email" class="email-label">Email</label>
-			<input type="text" id="email" class="email-input">
-			<label for="text-area">Please outline your request below</label>
-			<textarea name="text-area" id="text-area" cols="30" rows="50"></textarea>
-			<label for="file-upload">Upload any documents here</label>
-			<input type="file" class="file-upload" id="file-upload" value="Upload">
-			<input type="submit">
-			<input type="reset">
-		</form>
-	</div>
-</div>
-
 <div class="form-wrap w-form" data-ix="fade-on-load-2">
-	<form id="wf-form-Contact-form" name="wf-form-Contact-form" data-name="Contact form" method="get" class="form">
+	<form action="/" id="contact-us-form" class="form contact-form">
 		<p class="paragraph-light darker application">Feel free to contact us via <span>Linkedin</span>, <a
 				href="https://twitter.com" target="_blank" class="link-style">Twitter</a> or <a href="https://www.facebook.com/"
 				target="_blank" class="link-style">Facebook</a> if you prefer. </p>
 		<div class="form-row">
 			<div class="form-name">
-				<label for="name" class="email-label">Name</label>
+				<label for="name" class="name-label form-label">Name</label>
 				<input type="text" class="form-input name-input" id="name">
+				<small></small>
 			</div>
 		</div>
 		<div class="form-row">
 			<div class="form-telephone">
-				<label for="number">Contact number</label>
+				<label for="number" class="tel-label form-label">Contact number</label>
 				<input type="tel" class="form-input telephone-input" id="telephone">
+				<small></small>
 			</div>
 		</div>
 		<div class="form-row">
 			<div class="form-email">
-				<label for="email" class="email-label">Email</label>
+				<label for="email" class="email-label form-label">Email</label>
 				<input type="text" id="email" class="form-input email-input">
+				<small></small>
 			</div>
 		</div>
 		<label for="Message-body" class="form-label">Your message<span class="description-text"></span>
 		</label>
-		<textarea id="Message-body" name="Message-body" data-name="Message body" maxlength="5000" required="" placeholder=""
+		<textarea id="Message-body" name="Message-body" maxlength="5000" required="" placeholder=""
 			class="form-input textarea-input">
 		</textarea>
-		<div class="form-row">
-			<div class="upload-div"> Upload any documents here <label for="file-upload" class="custom-upload">
-					<span class="file-name-span"></span>
-					<input type="file" class="upload-input form-input" id="file-upload" value="Upload"> </label>
-			</div>
+		<div class="consent-button">
+			<label for="consent-button" class="form-label">I consent to data being stored by Osprey Security for marketing and
+				contact purposes. </label>
+			<input type="checkbox" name="consent-button" id="consent-button" />
 		</div>
 		<div class="centred-submit centered-button">
-			<input type="submit" value="Contact" data-wait="Please wait..." class="submit-btn form-button">
+			<input type="submit" value="Contact" class="submit-btn form-button">
 		</div>
 		<div class="centered-reset centered-button">
 			<input type="reset" class="reset-input form-button" id="reset">
 		</div>
 	</form>
-	<div class="success-msg w-form-done">
+	<div class="success-msg w-form-done" id="success-msg">
 		<div>Thank you for contacting us. We&#x27;ll reply as soon as possible.<br><br>In the meantime, feel free to follow
 			our website updates on our <a href="https://twitter.com/" target="_blank" class="light-link">Twitter</a> and <a
 				href="https://www.facebook.com" target="_blank" class="light-link">Facebook</a> accounts.<br></div>
 	</div>
-	<div class="w-form-fail">
+	<div class="w-form-fail fail-msg" id="fail-msg">
 		<div>Oops! Something went wrong while submitting the form.</div>
 	</div>
-	<script src="/public/js/contactUs"></script>
+	<script src="/public/js/mailer.js"></script>
 </div>

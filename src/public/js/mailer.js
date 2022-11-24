@@ -1,14 +1,54 @@
 //console.log("Hello");
 
-const contactForm = document.querySelector('.contact-form');
-const form = document.querySelector('#contact-us-form');
+const contactForm = document.getElementById('contact-us-form');
 
 const nameInput = document.getElementById('name');
-const emailInput = document.querySelector('#email');
-const telephoneInput = document.querySelector('#telephone');
-const serviceChoice = document.querySelector('#service-list');
-const messageInput = document.querySelector('#your-message');
-const consentInput = document.querySelector('#consent-button');
+const emailInput = document.getElementById('email');
+const telephoneInput = document.getElementById('telephone');
+const messageInput = document.getElementById('Message-body');
+const consentInput = document.getElementById('consent-button');
+
+// Drop Zone to be added when client consents
+
+// let dropbox;
+
+// dropbox = document.getElementById('dropbox');
+// dropbox.addEventListener('dragenter', dragenter, false);
+// dropbox.addEventListener('dragover', dragover, false);
+// dropbox.addEventListener('drop', drop, false);
+
+// function dragenter(e) {
+// 	e.stopPropagation();
+// 	e.preventDefault();
+// }
+
+// function dragover(e) {
+// 	e.stopPropagation();
+// 	e.preventDefault();
+// }
+
+// function drop(e) {
+// 	e.stopPropagation();
+// 	e.preventDefault();
+
+// 	const dt = e.dataTransfer;
+// 	const files = dt.files;
+
+// 	handleFiles(files);
+// }
+
+// function handleFiles(files) {
+// 	for (let i = 0; i < files.length; i++) {
+// 		const file = files[i];
+
+// 		const text = document.createElement('p');
+
+// 		text.classList.add('uploaded');
+// 		text.file = file;
+// 		preview.appendChild(text)
+
+// 	}
+// }
 
 const checkName = () => {
 	let valid = false;
@@ -88,8 +128,8 @@ const showSuccess = input => {
 	error.textContent = '';
 };
 
-const successMsg = document.getElementById('success');
-const failedMsg = document.getElementById('failed');
+const successMsg = document.getElementById('success-msg');
+const failedMsg = document.getElementById('fail-msg');
 const formContainer = document.getElementById('form-container');
 
 successMsg.style.display = 'none';
@@ -120,21 +160,26 @@ contactForm.addEventListener('submit', e => {
 	console.log(formData);
 
 	let xhr = new XMLHttpRequest();
-	xhr.open('POST', '/');
+	xhr.open('POST', '/', true);
 	xhr.setRequestHeader('content-type', 'application/json');
+	xhr.responseType = 'text';
 	xhr.onload = function () {
-		console.log(xhr.responseText);
+		if (xhr.readyState === xhr.DONE) {
+			if (xhr.status === 200) {
+				console.log(xhr.response + 'is:');
+				console.log(xhr.responseText);
+			}
+		}
 		if (xhr.responseText == 'Success') {
 			console.log('Nice');
 			successTime();
 			nameInput.value = '';
 			emailInput.value = '';
 			telephoneInput.value = '';
-			serviceChoice.value = '';
 			messageInput.value = '';
 			consentInput.value = '';
 		} else {
-			console.log('something went wrong');
+			console.log('something went wrong @ xhr');
 		}
 	};
 
