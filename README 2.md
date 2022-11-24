@@ -1,4 +1,4 @@
-# Osprey Marine Security-docker
+# Osprey Security-docker
 
 To build the app
 

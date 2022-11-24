@@ -359,6 +359,10 @@ router.get(
 	}
 );
 
+router.get('/contact-us', (req, res) => {
+	res.render('contact-us');
+});
+
 router.get('/layout', (req, res) => {
 	res.render('layout');
 });

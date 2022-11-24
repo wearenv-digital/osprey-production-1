@@ -7872,8 +7872,92 @@ nav.breadcrumb {
 	font-family: "Avenir";
 	font-size: 18px;
 }
+
 nav.breadcrumb-product-page {
 	position: relative;
 	top: 20px;
 	left: 20px;
+}
+
+.form-row {
+	width: 100%;
+
+}
+
+.form-input {
+	width: 100%;
+	outline: none;
+	border: none;
+	background-color: #f7f7f7;
+}
+
+.upload-div {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center !important;
+	align-items: center !important;
+	padding: 10px 0;
+}
+
+.file-upload {
+	background-color: #fff;
+	text-align: center !important;
+
+}
+
+input.upload-input {
+	margin: 10px 0;
+}
+
+.upload-input {
+	width: auto;
+	background-color: #fff;
+}
+
+.centered-button {
+	padding: 12px;
+}
+
+
+.form-button {
+	height: 2em;
+	width: auto;
+	min-width: 200px;
+}
+
+
+
+input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	clip-path: inset(50%);
+	border: 0;
+}
+
+label.custom-upload {}
+
+label.custom-upload {
+
+	border: 1px solid #ccc;
+	display: inline-block;
+	margin-top: 12px;
+	padding: 12px 24px;
+	cursor: pointer;
+}
+
+label.custom-upload:hover {
+	background-color: #0064b1;
+}
+
+input.submit-btn {
+	background-color: #1b70a9;
+	outline: none;
+	border: none !important;
+
 }
