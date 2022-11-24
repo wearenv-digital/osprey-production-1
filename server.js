@@ -17,24 +17,32 @@ app.use('/public', express.static('./src/public'));
 app.use(require('./src/routes/routes'));
 
 app.post('/', (req, res) => {
-	const transporter = nodemailer.createTransport({
-		service: 'smtp.ionos.co.uk',
-		host: 'smtp.ionos.co.uk',
-		port: 587,
-		secure: false,
+	// const transporter = nodemailer.createTransport({
+	// 	service: 'smtp.ionos.co.uk',
+	// 	host: 'smtp.ionos.co.uk',
+	// 	port: 587,
+	// 	secure: false,
+	// 	auth: {
+	// 		user: '',
+	// 		pass: ''
+	// 	}
+	// });
+
+	var transport = nodemailer.createTransport({
+		host: 'smtp.mailtrap.io',
+		port: 2525,
 		auth: {
-			user: '',
-			pass: ''
+			user: 'a7ef2e1132b767',
+			pass: 'fa84c39bf1cbde'
 		}
 	});
 	const mailOptions = {
 		from: req.body.email,
-		to: 'info@outsourcedcreditcontrol.co.uk',
+		to: 'info@ospreysecurity.co.uk',
 		subject: `Message from ${req.body.email} about ${req.body.service}`,
 		text: `Message from: ${req.body.name}
 		Email: ${req.body.email}.
 		Tel no: ${req.body.telephone}.
-		Servive required: ${req.body.service}.
 		Message: ${req.body.message}.
 		Consent: ${req.body.consent}`
 	};
