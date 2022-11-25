@@ -7,6 +7,9 @@ const emailInput = document.getElementById('email');
 const telephoneInput = document.getElementById('telephone');
 const messageInput = document.getElementById('Message-body');
 const consentInput = document.getElementById('consent-button');
+const submitBtn = document.getElementById('submit');
+
+consentInput.style.visibility = 'hidden';
 
 // Drop Zone to be added when client consents
 
@@ -128,6 +131,50 @@ const showSuccess = input => {
 	error.textContent = '';
 };
 
+function showConsent() {
+	consentInput.style.visibility = 'visible';
+}
+function hideConsent() {
+	consentInput.style.visibility = 'hidden';
+}
+
+let valid = '';
+
+function checkValidity() {
+	let valid = false;
+	if (checkName() && checkEmail() && checkTelephone() === true) {
+		valid = true;
+	} else {
+		valid = false;
+	}
+	console.log(valid);
+	if (valid === true) {
+		showConsent();
+	} else {
+		hideConsent();
+	}
+}
+
+// disable the submit button and change the colour on consent
+
+if ((submitBtn.disabled = true)) {
+	submitBtn.style.backgroundColor = '#f7f7f7';
+}
+
+consentInput.addEventListener('change', function () {
+	if (!this.checked) {
+		console.log('not checked');
+		submitBtn.style.backgroundColor = '#f7f7f7';
+		submitBtn.style.cursor = 'default';
+		submitBtn.disabled = true;
+	} else {
+		console.log('checked');
+		submitBtn.style.backgroundColor = '#1b70a9';
+		submitBtn.style.cursor = 'pointer';
+		submitBtn.disabled = false;
+	}
+});
+
 const successMsg = document.getElementById('success-msg');
 const failedMsg = document.getElementById('fail-msg');
 const formContainer = document.getElementById('form-container');
@@ -146,9 +193,8 @@ function errorTime() {
 	failedMsg.style.display = 'block';
 }
 
-contactForm.addEventListener('submit', e => {
+contactForm.addEventListener('submit', async function (e) {
 	e.preventDefault();
-	// console.log('form submitted');
 
 	let formData = {
 		name: nameInput.value,
@@ -157,34 +203,60 @@ contactForm.addEventListener('submit', e => {
 		message: messageInput.value,
 		consent: consentInput.value
 	};
-	console.log(formData);
 
-	let xhr = new XMLHttpRequest();
-	xhr.open('POST', '/', true);
-	xhr.setRequestHeader('content-type', 'application/json');
-	xhr.responseType = 'text';
-	xhr.onload = function () {
-		if (xhr.readyState === xhr.DONE) {
-			if (xhr.status === 200) {
-				console.log(xhr.response + 'is:');
-				console.log(xhr.responseText);
+	try {
+		const Response = await fetch('/', {
+			method: 'POST',
+			body: JSON.stringify(formData),
+			headers: {
+				'Content-type': 'application/json'
 			}
-		}
-		if (xhr.responseText == 'Success') {
-			console.log('Nice');
-			successTime();
-			nameInput.value = '';
-			emailInput.value = '';
-			telephoneInput.value = '';
-			messageInput.value = '';
-			consentInput.value = '';
+		});
+		console.log('status code: ', Response.status);
+		if (!Response.ok) {
+			console.log(Response);
+			throw new Error(`Error! status; ${Response.status}`);
 		} else {
-			console.log('something went wrong @ xhr');
+			successTime();
 		}
-	};
-
-	xhr.send(JSON.stringify(formData));
+		const result = await Response.json();
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
 });
+
+// contactForm.addEventListener('submit', e => {
+// 	e.preventDefault();
+
+// 	let formData = {
+// 		name: nameInput.value,
+// 		email: emailInput.value,
+// 		telephone: telephoneInput.value,
+// 		message: messageInput.value,
+// 		consent: consentInput.value
+// 	};
+
+// 	console.log(formData);
+
+// 	fetch('/', {
+// 		method: 'POST',
+// 		body: JSON.stringify(formData),
+// 		headers: {
+// 			'Content-type': 'application/json'
+// 		}
+// 	})
+// 		.then(function (response) {
+// 			console.log('response is:' + response);
+// 			if (response === 'OK') {
+// 				successTime();
+// 			}
+// 		})
+// 		.then(function (data) {
+// 			console.log(data);
+// 		})
+// 		.catch(error => console.error('error', error));
+// });
 
 // real time validation
 function debounce(fn, delay = 500) {
@@ -215,5 +287,12 @@ contactForm.addEventListener(
 				checkTelephone();
 				break;
 		}
+	})
+);
+
+contactForm.addEventListener(
+	'input',
+	debounce(function (e) {
+		checkValidity();
 	})
 );

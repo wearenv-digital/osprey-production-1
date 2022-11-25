@@ -12,6 +12,21 @@ app.set('views', path.resolve('./src/views'));
 
 app.use(bodyParser.json());
 
+const middlewareCheck = (req, res, next) => {
+	if (req.method === 'POST') {
+		console.log('REQ HOST: ' + req.get('host'));
+		console.log('REQ ROUTE:');
+		console.log(req.route);
+		console.log('REQ BODY:');
+		console.log(req.body);
+	}
+	next();
+	if (res.status === 404) {
+		console.log('ERROR RESPONSE:');
+		console.log(res);
+	}
+};
+
 app.use('/public', express.static('./src/public'));
 
 app.use(require('./src/routes/routes'));
@@ -27,8 +42,28 @@ app.use(require('./src/routes/routes'));
 // 	}
 // });
 
-app.post('/', (req, res) => {
-	var transporter = nodemailer.createTransport({
+// var mailOptions = {
+// 	from: req.body.email,
+// 	to: 'info@ospreysecurity.co.uk',
+// 	subject: `Message from ${req.body.email} about`,
+// 	text: `Message from: ${req.body.name}.
+// 		Email: ${req.body.email}.
+// 		Tel no: ${req.body.telephone}.
+// 		Message: ${req.body.message}.
+// 		Consent: ${req.body.consent}`
+// };
+
+// var transporter = nodemailer.createTransport({
+// 	host: 'smtp.mailtrap.io',
+// 	port: 2525,
+// 	auth: {
+// 		user: '7330c4a50e1274',
+// 		pass: '55b9a417dc916b'
+// 	}
+// });
+
+function sendEmail(req) {
+	let transporter = nodemailer.createTransport({
 		host: 'smtp.mailtrap.io',
 		port: 2525,
 		auth: {
@@ -46,20 +81,43 @@ app.post('/', (req, res) => {
 		Message: ${req.body.message}.
 		Consent: ${req.body.consent}`
 	};
+	return transporter.sendMail(mailOptions);
+}
 
-	console.log(mailOptions);
-	transporter.sendMail(mailOptions, (error, info) => {
-		if (error) {
-			var err = new Error();
-			console.log(err.stack);
-			// console.log(err.stack);
-			res.send('error @ sendMail function');
-		} else {
-			console.log('Email sent' + info.res);
-			res.send('Success');
-		}
-	});
+app.post('/', async (req, res) => {
+	try {
+		await sendEmail(req);
+		console.log('success with nodemailer');
+		res.sendStatus(200);
+	} catch (err) {
+		console.log('error', err);
+		res.send('error');
+	}
 });
+
+// app.post('/', (req, res) => {
+// 	var transporter = nodemailer.createTransport({
+// 		host: 'smtp.mailtrap.io',
+// 		port: 2525,
+// 		auth: {
+// 			user: '7330c4a50e1274',
+// 			pass: '55b9a417dc916b'
+// 		}
+// 	});
+
+// 	console.log(mailOptions);
+// 	transporter.sendMail(mailOptions, (error, info) => {
+// 		if (error) {
+// 			var err = new Error();
+// 			console.log(err.stack);
+// 			// console.log(err.stack);
+// 			res.send('error @ sendMail function');
+// 		} else {
+// 			console.log('Email sent' + info.res);
+// 			res.send('Success');
+// 		}
+// 	});
+// });
 
 app.listen(PORT, (req, res) => {
 	console.log(`server running on port ${PORT}`);

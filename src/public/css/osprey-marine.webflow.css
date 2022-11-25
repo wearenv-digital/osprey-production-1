@@ -7950,7 +7950,7 @@ nav.breadcrumb-product-page {
 }
 
 .form-input {
-	width: 100%;
+	width: 80%;
 	outline: none;
 	border: none;
 	background-color: #f7f7f7;
@@ -8041,4 +8041,14 @@ input.submit-btn {
 
 	max-width: 100%;
 
+}
+
+.w-tab-menu {
+	width: 100%;
+	display: flex;
+
+}
+
+.w-tab-link {
+	width: 100% !important;
 }
