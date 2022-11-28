@@ -42,26 +42,6 @@ app.use(require('./src/routes/routes'));
 // 	}
 // });
 
-// var mailOptions = {
-// 	from: req.body.email,
-// 	to: 'info@ospreysecurity.co.uk',
-// 	subject: `Message from ${req.body.email} about`,
-// 	text: `Message from: ${req.body.name}.
-// 		Email: ${req.body.email}.
-// 		Tel no: ${req.body.telephone}.
-// 		Message: ${req.body.message}.
-// 		Consent: ${req.body.consent}`
-// };
-
-// var transporter = nodemailer.createTransport({
-// 	host: 'smtp.mailtrap.io',
-// 	port: 2525,
-// 	auth: {
-// 		user: '7330c4a50e1274',
-// 		pass: '55b9a417dc916b'
-// 	}
-// });
-
 function sendEmail(req) {
 	let transporter = nodemailer.createTransport({
 		host: 'smtp.mailtrap.io',
@@ -94,30 +74,6 @@ app.post('/', async (req, res) => {
 		res.send('error');
 	}
 });
-
-// app.post('/', (req, res) => {
-// 	var transporter = nodemailer.createTransport({
-// 		host: 'smtp.mailtrap.io',
-// 		port: 2525,
-// 		auth: {
-// 			user: '7330c4a50e1274',
-// 			pass: '55b9a417dc916b'
-// 		}
-// 	});
-
-// 	console.log(mailOptions);
-// 	transporter.sendMail(mailOptions, (error, info) => {
-// 		if (error) {
-// 			var err = new Error();
-// 			console.log(err.stack);
-// 			// console.log(err.stack);
-// 			res.send('error @ sendMail function');
-// 		} else {
-// 			console.log('Email sent' + info.res);
-// 			res.send('Success');
-// 		}
-// 	});
-// });
 
 app.listen(PORT, (req, res) => {
 	console.log(`server running on port ${PORT}`);
