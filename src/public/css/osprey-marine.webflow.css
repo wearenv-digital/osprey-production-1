@@ -2969,7 +2969,7 @@ td.val-data {
 }
 
 .upper-head.green {
-	color: #31353d
+	color: #d7d7d7
 }
 
 .section-title {
@@ -2977,7 +2977,7 @@ td.val-data {
 	margin-bottom: 15px;
 	/* font-family: neuropol; */
 	font-family: Avenir, sans-serif;
-	color: #1b70a9;
+	color: #efefef;
 	font-size: 34px;
 	line-height: 44px;
 	font-weight: 500;
@@ -3150,7 +3150,8 @@ td.val-data {
 	background-image: linear-gradient(90deg, rgba(9, 50, 115, .41), rgba(9, 50, 115, .21)), url(../images/pexels-ellie-burgin-5302092.jpg);
 	background-size: auto, cover;
 	background-repeat: repeat, no-repeat;
-	background-attachment: scroll, fixed
+	background-attachment: scroll, fixed;
+	background-position-y: initial;
 }
 
 .div-content-hero {
@@ -3550,13 +3551,14 @@ td.val-data {
 	background-repeat: no-repeat
 }
 
-.category-img._2 {
-	background-image: url(../images/pexels-travis-saylor-951408.jpg);
+.category-img._3 {
+	background-image: url(../images/ethernet.jpeg);
 	background-position: 50% 50%
 }
 
-.category-img._3 {
-	background-image: url(../images/Integrated-ANPR-camera.jpg)
+.category-img._2 {
+	background-image: url(../images/housings-1.jpg);
+	background-position: 0px -77px;
 }
 
 .category-img._4 {
@@ -3565,7 +3567,11 @@ td.val-data {
 }
 
 .category-img._5 {
-	background-image: url(../images/pexels-cowomen-2041396.jpg)
+	background-image: url(../images/recordings-small-on-grey-1.jpg);
+	background-size: 110%;
+	background-position-x: -20px;
+	background-position-y: -96px;
+
 }
 
 .category-img._6 {
@@ -3573,12 +3579,15 @@ td.val-data {
 }
 
 .category-img._7 {
-	background-image: url(../images/pexels-field-engineer-442154.jpg);
-	background-position: 50% 50%
+	background-image: url(../images/ancillary-1.jpg);
+	background-position-y: -76px;
+	background-position-x: -1px;
+	/* background-position: 50% 50% */
 }
 
 .category-img._8 {
-	background-image: url(../images/right-img.jpg)
+	background-image: url(../images/security-management-display.jpg);
+	background-position-y: -54px;
 }
 
 .category-img.imglast {
@@ -4797,7 +4806,7 @@ nav.breadcrumb-nav>ul>li {
 .imgserv.marine {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(9, 50, 115, .32)), to(rgba(9, 50, 115, .63))), url(../images/DSC01854.jpg);
 	background-image: linear-gradient(180deg, rgba(9, 50, 115, .32), rgba(9, 50, 115, .63)), url(../images/DSC01854.jpg);
-	background-position: 0 0, 0 0
+	/* background-position: 0 0, 0 0 */
 }
 
 .imgserv.law._25,
@@ -4855,7 +4864,7 @@ nav.breadcrumb-nav>ul>li {
 
 .imgserv.parking {
 	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(9, 50, 115, .32)), to(rgba(9, 50, 115, .63))), url(../images/pexels-k-howard-2220292.jpg);
-	background-image: linear-gradient(180deg, rgba(9, 50, 115, .32), rgba(9, 50, 115, .63)), url(../images/pexels-k-howard-2220292.jpg)
+	background-image: linear-gradient(180deg, rgba(9, 50, 115, .32), rgba(9, 50, 115, .63)), url(../images/hazardous-market.JPG)
 }
 
 .imgserv.security {
@@ -5268,7 +5277,7 @@ img.product-list-image {}
 }
 
 .section-5 {
-	padding-top: 180px;
+	margin-top: -130px;
 	padding-right: 5%;
 	padding-left: 5%
 }
@@ -7906,7 +7915,10 @@ html.w-mod-js [data-ix=display-none] {
 	font-display: auto
 }
 
+
+
 nav.breadcrumb {
+	z-index: 999;
 	position: relative;
 	top: 140px;
 	left: 20px;
@@ -8075,15 +8087,36 @@ input.submit-btn {
 	body {
 		max-width: 99.99%;
 	}
+
 	.section-4 {
 		padding: 0 0.2em;
 	}
+
 	.product-container {
 		width: 100%;
 		padding: 15px 0;
 	}
+
 	.image-bullet-wrapper {
 		flex-direction: column;
 		align-items: center;
 	}
+}
+
+.hero-wrapper {
+	width: 99.98vw;
+	height: 80vh;
+
+}
+
+.hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/hero/sunset-dockyard.jpg");
+	height: 100%;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	background-attachment: scroll, fixed;
+
 }
