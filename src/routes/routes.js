@@ -360,7 +360,7 @@ router.get(
 );
 
 router.get('/contact-us', breadcrumbs.Middleware(), (req, res) => {
-	res.render('contact', { breadcrumbs: req.breadcrumbs});
+	res.render('contact', { breadcrumbs: req.breadcrumbs });
 });
 
 router.get('/layout', (req, res) => {
@@ -375,8 +375,24 @@ router.get('/about', breadcrumbs.Middleware(), (req, res) => {
 	res.render('about', { breadcrumbs: req.breadcrumbs });
 });
 
-router.get('/marine', breadcrumbs.Middleware(), (req, res) => {
-	res.render('marine', { breadcrumbs: req.breadcrumbs });
+// router.get('/marine', breadcrumbs.Middleware(), (req, res) => {
+// 	res.render('marine', { breadcrumbs: req.breadcrumbs });
+// });
+
+router.get('/marine', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		var data = {};
+		var sqlQuery =
+			'SELECT product_name, product_code, image_link FROM cam_info WHERE category = "marine" ';
+		data = await controllers.getNamesQuery(sqlQuery);
+	} catch (error) {
+		consolee.log(error);
+	}
+
+	res.render('marine', {
+		data: data,
+		breadcrumbs: req.breadcrumbs
+	});
 });
 
 router.get('/law-enforcement', (req, res) => {
@@ -391,8 +407,20 @@ router.get('/security', breadcrumbs.Middleware(), (req, res) => {
 	res.render('security', { breadcrumbs: req.breadcrumbs });
 });
 
-router.get('/hazardous-areas', breadcrumbs.Middleware(), (req, res) => {
-	res.render('hazardous-areas', { breadcrumbs: req.breadcrumbs });
+router.get('/hazardous-areas', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		var data = {};
+		var sqlQuery =
+			'SELECT product_name, product_code, image_link FROM cam_info WHERE category = "hazard" ';
+		data = await controllers.getNamesQuery(sqlQuery);
+	} catch (error) {
+		consolee.log(error);
+	}
+
+	res.render('hazardous-areas', {
+		data: data,
+		breadcrumbs: req.breadcrumbs
+	});
 });
 
 router.get('/products', breadcrumbs.Middleware(), (req, res) => {
@@ -736,6 +764,8 @@ router.get('/sell', breadcrumbs.Middleware(), (req, res) => {
 router.get('/terms-conditions', breadcrumbs.Middleware(), (req, res) => {
 	res.render('terms', { breadcrumbs: req.breadcrumbs });
 });
+
+// SERVICES ROUTES
 
 router.get('/services', breadcrumbs.Middleware(), (req, res) => {
 	res.render('services-collection', { breadcrumbs: req.breadcrumbs });

@@ -2986,6 +2986,7 @@ td.val-data {
 }
 
 .section-title.smaller {
+	color: #093273;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	font-size: 28px;
@@ -3478,6 +3479,10 @@ td.val-data {
 	justify-content: flex-start
 }
 
+/* .categories-holder.marine-cameras.cctv > .individual-category {
+	height: 150px;
+} */
+
 .nav-right-2,
 .nav-right-2.links {
 	-webkit-box-align: center;
@@ -3553,12 +3558,14 @@ td.val-data {
 
 .category-img._3 {
 	background-image: url(../images/ethernet.jpeg);
-	background-position: 50% 50%
+	background-position: center;
+	background-size: cover;
 }
 
 .category-img._2 {
 	background-image: url(../images/housings-1.jpg);
-	background-position: 0px -77px;
+	background-size: cover;
+	background-position: center;
 }
 
 .category-img._4 {
@@ -3568,9 +3575,8 @@ td.val-data {
 
 .category-img._5 {
 	background-image: url(../images/recordings-small-on-grey-1.jpg);
-	background-size: 110%;
-	background-position-x: -20px;
-	background-position-y: -96px;
+	background-size: cover;
+	background-position: center;
 
 }
 
@@ -3580,14 +3586,14 @@ td.val-data {
 
 .category-img._7 {
 	background-image: url(../images/ancillary-1.jpg);
-	background-position-y: -76px;
-	background-position-x: -1px;
-	/* background-position: 50% 50% */
+	background-position: center;
+	background-size: cover;
 }
 
 .category-img._8 {
-	background-image: url(../images/security-management-display.jpg);
-	background-position-y: -54px;
+	background-image: url(../images/CCTV-monitoring.jpg);
+	background-position: center;
+	background-size: cover;
 }
 
 .category-img.imglast {
@@ -3606,33 +3612,87 @@ td.val-data {
 	text-align: center
 }
 
+/* PRODUCT CATEGORY IMAGES */
+
+/* CCTV CATEGORY IMAGES */
+
+div.cctv-categories.marine-cameras {
+	background-image: url(../images/marine-camera-category-1.jpg);
+	background-size: 140%;
+}
+
+div.cctv-categories.hazardous-cameras {
+	background-image: url(../images/hazardous-camera-1.jpg);
+}
+
+div.cctv-categories.thermal-cameras {
+	background-image: url(../images/thermal-category-2-1.jpg);
+}
+
+div.cctv-categories.commercial-cameras {
+	background-image: url(../images/marine-camera-category-1.jpg);
+	background-size: 140%;
+}
+
 .service.category-img {
-	background-image: url();
+	background-image: url(../images/service-title-images/Design.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 .service.category-img._2 {
-	background-image: url();
+	background-image: url(../images/service-title-images/Installation.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 .service.category-img._3 {
-	background-image: url();
+	background-image: url(../images/service-title-images/Security-service-support-lrg.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 .service.category-img._4 {
-	background-image: url();
+	background-image: url(../images/service-title-images/cctv-monitoring.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 .service.category-img._5 {
-	background-image: url();
+	background-image: url(../images/service-title-images/Training.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 .service.category-img._6 {
-	background-image: url();
+	background-image: url(../images/service-title-images/Consultancy.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 .service.category-img._7 {
-	background-image: url();
+	background-image: url(../images/service-title-images/security-risk-assessment.jpg);
+	background-size: cover;
+	background-position: center;
 }
+
+.risk.category-img {
+
+	padding-top: 90px;
+	padding-bottom: 90px;
+	background-color: #f5f5f5;
+	background-image: url(../images/service-title-images/security-risk-assessment.jpg);
+	background-position: 0 80%;
+	background-size: cover;
+	background-repeat: no-repeat
+}
+
+.risk.category-img._2 {
+	background-image: url(../images/service-title-images/fire-risk-assessment.jpg);
+	background-size: cover;
+	background-position: center;
+}
+
 
 .markets.category-img {
 	background-image: url();
@@ -4966,7 +5026,9 @@ div.product-list-image-wrapper {
 	justify-content: center;
 }
 
-img.product-list-image {}
+img.product-list-image {
+	max-height: 200px;
+}
 
 
 .tabs {
@@ -5277,7 +5339,7 @@ img.product-list-image {}
 }
 
 .section-5 {
-	margin-top: -130px;
+	margin-top: 180px;
 	padding-right: 5%;
 	padding-left: 5%
 }
@@ -7916,39 +7978,6 @@ html.w-mod-js [data-ix=display-none] {
 }
 
 
-
-nav.breadcrumb {
-	z-index: 999;
-	position: relative;
-	top: 140px;
-	left: 20px;
-}
-
-.breadcrumb-item {
-	text-decoration: none !important;
-	font-family: "Avenir";
-	font-size: 18px;
-}
-
-.breadcrumb-item-contact.active {
-	font-weight: 700 !important;
-}
-
-.breadcrumb-contact-us>.breadcrumb-item {
-	color: #fff !important;
-}
-
-
-nav.breadcrumb-contact {
-	color: #fff !important;
-}
-
-nav.breadcrumb-product-page {
-	position: relative;
-	top: 20px;
-	left: 20px;
-}
-
 /* Form Styling */
 
 :root {
@@ -8103,20 +8132,188 @@ input.submit-btn {
 	}
 }
 
+/* BREADCRUMBS */
+
+.prod-cctv-cameras {
+	color: #fdfdfd;
+}
+
+nav.breadcrumb {
+	z-index: 999;
+	position: relative;
+	top: 140px;
+	left: 20px;
+}
+
+.about-page>nav.breadcrumb {
+	color: #dfdfdf;
+}
+
+.camera-housing-main-page>nav.breadcrumb {
+	color: #fdfdfd;
+}
+
+
+.breadcrumb-item {
+	text-decoration: none !important;
+	font-family: "Avenir";
+	font-size: 18px;
+	color: #fdfdfd;
+}
+
+
+.breadcrumb-item-contact.active {
+	font-weight: 700 !important;
+}
+
+.breadcrumb-contact-us>.breadcrumb-item {
+	color: #fff !important;
+}
+
+
+nav.breadcrumb-contact {
+	color: #fff !important;
+}
+
+nav.breadcrumb-product-page {
+	position: relative;
+	top: 20px;
+	left: 20px;
+}
+
+/* HERO SECTION AND PAGE BY PAGE STYLING */
+
 .hero-wrapper {
 	width: 99.98vw;
-	height: 80vh;
-
+	height: 65vh;
 }
 
 .hero-image {
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/hero/sunset-dockyard.jpg");
 	height: 100%;
 	width: 100%;
-	background-position: center;
+	background-position: bottom;
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
 	background-attachment: scroll, fixed;
+}
+
+.transmission-page .hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/fiber-optic-g864d3e77b_1280.jpg");
+}
+
+.recording-analytics .hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url("../images/hero/containers.jpg");
+}
+
+.marine-market .hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/hero/container-ship-side.jpg");
+}
+
+.training-service .hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/service-title-images/corporate-training.jpg");
+}
+
+
+#main-page-about,
+#cctv-cameras,
+#camera-housing-main-page,
+#transmission-page,
+#recording-analytics,
+#cctv-ancillary,
+#security-management,
+#marine-market,
+#security-market,
+#hazardous-market,
+#services-collection,
+#system-design-service,
+#installations-service,
+#service-support,
+#training-service,
+#consultancy-service,
+#risk-assessment-service,
+#security-risk-service,
+#fire-risk-service,
+#datasheets-resources,
+#gallery-resources,
+#knowledge-centre-resources,
+#tools-resources,
+#press-resources {
+	margin-top: -130px;
+}
+
+.service.service-title-image {
+	background-image: url(../images/service-title-images/service-support-image.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
+}
+
+.system-design-title-image {
+	background-image: url(../images/service-title-images/Design.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
 
 }
+
+.installations-service-title-image {
+	background-image: url(../images/service-title-images/Installation.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
+
+}
+
+.service-support-title-image {
+	background-image: url(../images/service-title-images/service-support-image.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
+
+}
+
+.installations-service-title-image {
+	background-image: url(../images/service-title-images/Installation.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
+
+}
+
+/* .training-service-title-image {
+	background-image: url(../images/service-title-images/corporate-training.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
+} */
+
+.ervice-title-image {
+	background-image: url(../images/service-title-images/corporate-training.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
+}
+
+.-service-title-image {
+	background-image: url(../images/service-title-images/corporate-training.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: auto;
+}
+
+.risk-assessment,
+.security-risk-assessment,
+.fire-risk-assessment {
+	height: 300px;
+}
+

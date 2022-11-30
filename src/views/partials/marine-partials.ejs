@@ -1,38 +1,14 @@
-<div id="cctv" class="categories-holder cctv" data-ix="fade-on-scroll-2">
-	<div class="individual-category marine-category">
-		<a href="">
-			<div class="category-img"></div>
-			<div class="category-name marine-category">Marine Fixed Bullet Stainless Steel CCTV Cameras</div>
-		</a>
-		</div>
-		<div class="individual-category marine-category">
-			<a href="">
-				<div class="marine category-img _2"></div>
-				<div class="category-name marine-category">Marine Fixed Bullet Marine Finish CCTV Cameras</div>
+<!-- THIS WORKS -->
+<div id="cctv" class="categories-holder marine-cameras cctv" data-ix="fade-on-scroll-2">
+	<% data.forEach(function(el){ %>
+		<div class="individual-category marine-camera-product main-categories" id="main-categoriesId">
+			<a href="<%= `/product-page/${el.product_code}` %>">
+				<div class="marine">
+					<img class="product-list-image" src="<%=`${el.image_link}` %>" alt="">
+				</div>
+				<br>
+				<%= el.product_name %>
 			</a>
 		</div>
-		<div class="individual-category marine-category">
-			<a href="">
-				<div class="marine category-img _3"></div>
-				<div class="category-name marine-category">Marine Fixed Dome Stainless Steel CCTV Cameras</div>
-			</a>
-		</div>
-		<div class="individual-category marine-category">
-			<a href="">
-				<div class="marine category-img _5"></div>
-				<div class="category-name">Marine PTZ CCTV Cameras</div>
-			</a>
-		</div>
-		<div class="individual-category marine-category">
-			<a href="">
-				<div class="marine category-img _6"></div>
-				<div class="category-name marine-category">Exterior Fixed Bullet Stainless Steel CCTV Cameras</div>
-			</a>
-		</div>
-		<div class="individual-category marine-category">
-			<a href="">
-				<div class="marine category-img _7"></div>
-				<div class="category-name marine-category">Exterior Marine PTZ CCTV Cameras</div>
-			</a>
-		</div>
-	</div>
+		<% }) %>
+</div>
