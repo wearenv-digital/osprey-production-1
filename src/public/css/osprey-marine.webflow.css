@@ -3549,7 +3549,7 @@ td.val-data {
 .category-img {
 	padding-top: 90px;
 	padding-bottom: 90px;
-	background-color: #f5f5f5;
+	background-color: #fff;
 	background-image: url(../images/BS0S-1Z4I-I68.jpg);
 	background-position: 0 80%;
 	background-size: cover;
@@ -3618,11 +3618,14 @@ td.val-data {
 
 div.cctv-categories.marine-cameras {
 	background-image: url(../images/marine-camera-category-1.jpg);
-	background-size: 140%;
+	background-size: cover;
+	background-position: center;
 }
 
 div.cctv-categories.hazardous-cameras {
 	background-image: url(../images/hazardous-camera-1.jpg);
+	background-size: 60%;
+	background-position: center;
 }
 
 div.cctv-categories.thermal-cameras {
@@ -3631,7 +3634,8 @@ div.cctv-categories.thermal-cameras {
 
 div.cctv-categories.commercial-cameras {
 	background-image: url(../images/marine-camera-category-1.jpg);
-	background-size: 140%;
+	background-size: cover;
+	background-position: center;
 }
 
 .service.category-img {
