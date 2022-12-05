@@ -3838,33 +3838,30 @@ div.cctv-categories.commercial-cameras {
 	background-image: url();
 }
 
-.resources.category-img {
-	background-image: url();
+.resource.category-img {
+	background-image: url(../images/icons/datasheets.png);
+	background-size: contain;
+	background-position: center;
 }
 
-.resources.category-img._2 {
-	background-image: url();
+.resource.category-img._2 {
+	background-image: url(../images/icons/gallery.png);
+	background-size: contain;
+	background-position: center;
 }
 
-.resources.category-img._3 {
-	background-image: url();
+.resource.category-img._3 {
+	background-image: url(../images/icons/knowledge.png);
+	background-size: contain;
+	background-position: center;
 }
 
-.resources.category-img._4 {
-	background-image: url();
+.resource.category-img._4 {
+	background-image: url(../images/icons/tools.png);
+	background-size: contain;
+	background-position: center;
 }
 
-.resources.category-img._5 {
-	background-image: url();
-}
-
-.resources.category-img._6 {
-	background-image: url();
-}
-
-.resources.category-img._7 {
-	background-image: url();
-}
 
 
 
@@ -8316,4 +8313,3 @@ nav.breadcrumb-product-page {
 .fire-risk-assessment {
 	height: 300px;
 }
-
