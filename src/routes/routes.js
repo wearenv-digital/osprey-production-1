@@ -303,6 +303,9 @@ router.get(
 				newElecKeys.map((a, i) => [a, newElecVals[i]])
 			);
 
+			// res.send(finalFeatures);
+			// return;
+
 			// res.send(finalElecPhys);
 			// res.send(finalAv)
 			// res.send(finalSpecs)

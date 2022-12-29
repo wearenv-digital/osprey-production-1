@@ -5,6 +5,7 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+CREATE DATABASE IF NOT EXISTS `osprey` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `osprey`;
 
 DROP TABLE IF EXISTS `audio_video`;

@@ -31,22 +31,22 @@ services:
       - ./src:/app/src:ro
 
 
-  webserver:
-    container_name: webserver
-    image: httpd:latest
-    ports:
-      - 8080:80
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.apache.rule=Host(`apache.docker`)
-      - traefik.http.routers.apache.entrypoints=web
-      - traefik.port=80
-    volumes:
-      - ./apache/httpd.conf:/conf/httpd.conf
-    networks:
-      - traefik-proxy
-      - backend
+  # webserver:
+  #   container_name: webserver
+  #   image: httpd:latest
+  #   ports:
+  #     - 8080:80
+  #   labels:
+  #     - traefik.enable=true
+  #     - traefik.docker.network=traefik-proxy
+  #     - traefik.http.routers.apache.rule=Host(`apache.docker`)
+  #     - traefik.http.routers.apache.entrypoints=web
+  #     - traefik.port=80
+  #   volumes:
+  #     - ./apache/httpd.conf:/conf/httpd.conf
+  #   networks:
+  #     - traefik-proxy
+  #     - backend
 
 # for production
 # make sure traefik.toml IS NOT INSECURE
@@ -80,7 +80,7 @@ services:
     restart: unless-stopped
     command: mysqld --general-log=1 --general-log-file=/var/lib/mysql/general-log.log --max_allowed_packet=1073741824 --lower_case_table_names=1
     environment:
-      MYSQL_DATABASE: 'osprey'
+      MYSQL_DATABASE: 'osprey-all'
       MYSQL_USER: $DB_USER
       MYSQL_PASSWORD: $DB_PASSWORD
       MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
