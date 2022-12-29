@@ -8,3 +8,5 @@
 		watch = true
 		exposedByDefault = false
 		network = "proxy"
+[accessLog]
+	filePath = "./logs/access.log"

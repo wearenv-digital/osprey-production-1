@@ -1,7 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Dec 29, 2022 at 02:46 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `osprey-all`
@@ -15,8 +29,9 @@ USE `osprey-all`;
 -- Table structure for table `av`
 --
 
+DROP TABLE IF EXISTS `av`;
 CREATE TABLE `av` (
-  `Product Code` varchar(14) DEFAULT NULL,
+  `Product code` varchar(14) DEFAULT NULL,
   `Camera` varchar(37) DEFAULT NULL,
   `Resolution` varchar(20) DEFAULT NULL,
   `Pixels` varchar(25) DEFAULT NULL,
@@ -39,7 +54,7 @@ CREATE TABLE `av` (
   `Wide Dynamic Range` varchar(10) DEFAULT NULL,
   `Signal to Noise ratio` varchar(16) DEFAULT NULL,
   `Image features` varchar(94) DEFAULT NULL,
-  `Privacy  masking` varchar(28) DEFAULT NULL,
+  `Privacy  masking` varchar(28) DEFAULT NULL,
   `Analytics` varchar(150) DEFAULT NULL,
   `Video compression` varchar(112) DEFAULT NULL,
   `Bitrate` varchar(17) DEFAULT NULL,
@@ -51,48 +66,48 @@ CREATE TABLE `av` (
 -- Dumping data for table `av`
 --
 
-INSERT INTO `av` (`Product Code`, `Camera`, `Resolution`, `Pixels`, `Frame rate`, `Sensitivity`, `Optical Lens`, `Digital zoom`, `Aperture range`, `Angle of view`, `Min-working distance`, `Zoom speed`, `Shooting Mode`, `Focusing mode`, `IR Illumination range`, `Maximum vehicle speed`, `Digital image stabilisation`, `DORI`, `On-board storage (option)`, `White balance`, `Wide Dynamic Range`, `Signal to Noise ratio`, `Image features`, `Privacy  masking`, `Analytics`, `Video compression`, `Bitrate`, `Audio connection`, `Audio compression`) VALUES
+INSERT INTO `av` (`Product code`, `Camera`, `Resolution`, `Pixels`, `Frame rate`, `Sensitivity`, `Optical Lens`, `Digital zoom`, `Aperture range`, `Angle of view`, `Min-working distance`, `Zoom speed`, `Shooting Mode`, `Focusing mode`, `IR Illumination range`, `Maximum vehicle speed`, `Digital image stabilisation`, `DORI`, `On-board storage (option)`, `White balance`, `Wide Dynamic Range`, `Signal to Noise ratio`, `Image features`, `Privacy  masking`, `Analytics`, `Video compression`, `Bitrate`, `Audio connection`, `Audio compression`) VALUES
 ('BSOS-1Z4I-I68', '1MP 1/2.8\" CMOS', '1MP', '', '40m', '0.001lx @F1.2 colour; 0lx IR', '2.8-12mm x4  ', '', '', '', '', '', '', '', '', '', '', '', '', 'n/a', '', '', '', '', '', 'H264/265', '', 'n/a', 'n/a'),
-('BHOS2F4II66M', 'SONY 1/2.7″CMOS', '', '1920×1080 (2MP)', '2 megapixel and following 25 frame(full-time), support 1~25 fps  is adjustable;', 'Color 0.1Lux@F1.2,BW0.01 Lux@F1.2;', '4mm、6mm options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', 'n/a', '', 'Rotate mode, Saturation, Brightness, Contrast adjustable by  client software or web browser', '', '', 'H.264/H.265/MJPEG', '32 Kbps~8Mbps', '', 'Base Line Profile / Main Profile'),
+('BHOS2F4II66M', 'SONY 1/2.7″CMOS', '', '1920×1080 (2MP)', '2 megapixel and following 25 frame(full-time), support 1~25 fps  is adjustable;', 'Color 0.1Lux@F1.2,BW0.01 Lux@F1.2;', '4mm、6mm options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', 'n/a', '', 'Rotate mode, Saturation, Brightness, Contrast adjustable by  client software or web browser', '', '', 'H.264/H.265/MJPEG', '32 Kbps~8Mbps', '', 'Base Line Profile / Main Profile'),
 ('BSOS12F28II67', '1/2.8\" Sony Exmor CMOS', '2MP, 8MP', '', 'Max. 25fps', 'Colour: 0.03Lux;B/W: 0Lux(IR LED on)', '2.8mm fixed or 2.7-12mm varifocal', '8x', '', 'H: 113.7° / V: 61.5°', '', '', '', '', 'IR LED Upto 30M', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
 ('BSOS2FV0I66', '1/2.8”, 2.1M Sony STARVIS Sensor', '2MP', '', '25fps@1080p', 'Colour : 0.2Lux@50IRE / F1.2 / 3100K;BW : 0.0005Lux@50IRE / F1.2 ', '2.7~12mm, F1.3', '', '', '', '', '', '', '', 'IR LED Upto 30M', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', '25fps/JPEG 1fps', '', '', ''),
 ('BSOA-2Z4I-I67', '2MP  1/ 2.8” CMOS  1920 x 1080 pixels', '2MP', '', 'Dynamic with lens zoom angle. Up to 60m', 'Colour 0.001lx; Mono 0.001lx @ F1.2', '2.7-12mm    Motorised.  Smart auto-focus', '', '', '', '', '', '', '', '', '', '', '', 'Built-in on-camera SD Card recording (up to 256GB) for local back-up', '', '120 dB HDR', 'Better than 55dB', 'WDR, BLC, HLC, Defog, DIS', '', 'Perimeter, virtual fences, loitering, objects left/removed, video overlay, email alarm', '', '', 'G711 Line in/Line out', 'From 8kbps to 64kbps; Duplex, bi-directional'),
 ('BSOS12F20I66', '1/1.7\" Sony STARVIS CMOS', '12MP', '', 'Max. 20fps@4000x3000', 'Colour: 0.09Lux', 'Fixed 1.85mm, F2.0', '8x', '', 'H: 180° / V: 180°', '', '', '', '', 'No IR', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
 ('DSOS-1Z4I-I68', '1MP 1/3\" CMOS', '1MP', '', '40m', '0.0001lx @F1.2 colour; 0lx IR', '2.7-12mm x4  ', '', '', '', '', '', '', '', '', '', '', '', '', 'n/a', '', '', '', '', '', 'H264/MJPEG', '', 'n/a', 'n/a'),
-('DHOS2F4II66M', ' SONY1/3″CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.1Lux@F1.1,  BW  0.01 Lux@F1.1;', '4mm、6mm、8mm   Options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', '', '', ' Rotate mode, Saturation, Brightness, Contrast adjustable by client software or web browser', '', '', 'H.264/H.265/MJPEG', '32  Kbps~8Mbps', '', 'BaseLine  Profile / Main Profile'),
-('BHOS2Z18OI66M', ' SONY 1/2.8″ CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.05Lux@F1.6,  BW  0.01 Lux@F1.6', '4.7 - 84.6 mm motorised zoom lens (x18)', '', 'F1.6 – F3.5', '58.3-3.2 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx. 2.7s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', 'na', '', '', '', 'Micro SD card 128GB', '', '', '', '', '', '', 'H.264/H.265/MJPEG', '32  Kbps~16Mbps', 'na', 'na'),
-('BHTS3F8OI66M', '', '', '', 'Main Stream: D1 @ 25fps', '', '', '16x', '', '', '', '', '', '', '', '', '', '', 'Micro SD card 128GB', '', '', '', '', 'Off / On (4 Area, Rectangle)', 'Perimeter, Single Virtual Fences, Double Virtual Fences, Object Left, Object Removed', '', '100Kbps ~ 6Mbps', '1ch Audio In,1ch Audio Out(optional)', ''),
-('PHOS2Z260I66M', '1/2.8″Progressive  Scan CMOS', '≥1000TVL', '1920×1080 (2MP)', '', 'Color ：0.001Lux @ (F1.5，AGC ON); BW ：0.0001Lux @(F1.5，AGC  ON)', ' 5-130mm, 26x', '16x', 'F1.6-F3.5', '58.3-3.2°(Wide-Tele)', '10-1000mm(Wide-Tele)', 'About 3s(  optional , Wide-Tele)', '', 'Auto / semi  auto / manual', 'na', '', '', '', 'Built in Micro SD card slot,  support SD/SDHC/SDXC Micro card (maximum support 256G),support manual / alarm  video recording', 'Auto/ manual / ATW  / Outdoor / indoor fluorescent lamp / lamp / white balance  white balance', 'Yes', '＞ 52dB', '', 'Yes', '', 'H.264/H.265/MJPEG', '', '', 'G.711/G.726'),
+('DHOS2F4II66M', ' SONY1/3″CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.1Lux@F1.1,  BW  0.01 Lux@F1.1;', '4mm、6mm、8mm   Options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', '', '', ' Rotate mode, Saturation, Brightness, Contrast adjustable by client software or web browser', '', '', 'H.264/H.265/MJPEG', '32  Kbps~8Mbps', '', 'BaseLine  Profile / Main Profile'),
+('BHOS2Z18OI66M', ' SONY 1/2.8″ CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.05Lux@F1.6,  BW  0.01 Lux@F1.6', '4.7 - 84.6 mm motorised zoom lens (x18)', '', 'F1.6 – F3.5', '58.3-3.2 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx. 2.7s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', 'na', '', '', '', 'Micro SD card 128GB', '', '', '', '', '', '', 'H.264/H.265/MJPEG', '32  Kbps~16Mbps', 'na', 'na'),
+('BHTS3F8OI66M', '', '', '', 'Main Stream: D1 @ 25fps', '', '', '16x', '', '', '', '', '', '', '', '', '', '', 'Micro SD card 128GB', '', '', '', '', 'Off / On (4 Area, Rectangle)', 'Perimeter, Single Virtual Fences, Double Virtual Fences, Object Left, Object Removed', '', '100Kbps ~ 6Mbps', '1ch Audio In,1ch Audio Out(optional)', ''),
+('PHOS2Z260I66M', '1/2.8″Progressive  Scan CMOS', '≥1000TVL', '1920×1080 (2MP)', '', 'Color ：0.001Lux @ (F1.5，AGC ON); BW ：0.0001Lux @(F1.5，AGC  ON)', ' 5-130mm, 26x', '16x', 'F1.6-F3.5', '58.3-3.2°(Wide-Tele)', '10-1000mm(Wide-Tele)', 'About 3s(  optional , Wide-Tele)', '', 'Auto / semi  auto / manual', 'na', '', '', '', 'Built in Micro SD card slot,  support SD/SDHC/SDXC Micro card (maximum support 256G),support manual / alarm  video recording', 'Auto/ manual / ATW  / Outdoor / indoor fluorescent lamp / lamp / white balance  white balance', 'Yes', '＞ 52dB', '', 'Yes', '', 'H.264/H.265/MJPEG', '', '', 'G.711/G.726'),
 ('DSOS2Z200I67', '1/2.8\" Sony STARVIS CMOS', '2MP', '', 'Max. 25fps@1920x1080', 'Colour: 0.2Lux@50IRE, BW: 0.01Lux@50IRE', 'Optical zoom 20x, 4.7-94mm±5%', '16x', '', 'H: 55.5°-3°', '', '', '', '', 'No IR', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
 ('PSOA-3Z30-XI68', '3MP  1/ 2.8” CMOS', '3MP', '', 'IR – 300m; White light – 250m', 'Colour 0.01lx @ F1.2; Mono 0.0001lx @ F1.2', 'Motorised x30 zoom 4.5-135mm  ', '', '', 'HFOV  59.9-2.3 degrees', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Perimeter, line crossing, loitering, objects left/removed', 'H264, H265, MJPEG  ONVIF S, G, Q', '100kbps to 12Mbps', '', ''),
 ('PSOS-3Z30-XI68', '3MP  1/ 2.8” CMOS', '3MP', '', 'IR – 300m; White light – 250m', 'Colour 0.01lx @ F1.2; Mono 0.0001lx @ F1.2', 'Motorised x30 zoom 4.5-135mm  ', '', '', 'HFOV  59.9-2.3 degrees', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Perimeter, line crossing, loitering, objects left/removed', 'H264, H265, MJPEG  ONVIF S, G, Q', '100kbps to 12Mbps', '', ''),
-('PHOS2Z200I66M', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
+('PHOS2Z200I66M', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
 ('PSOS2Z36II67', '1/2\" Sony Exmor CMOS', '2MP', '', 'Max. 50fps@1920x1080', 'Colour:0.05Lux;B/W: 0Lux(IR LED)', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', 'IR LED 100m', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
-('PHOS2Z20II66M', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON); 0lux with IR', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '100m @ 808nm', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
-('PHOTS2Z200I66M', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20X optical', '', 'F1.6 – F5.0', '65.5-2.11 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx.3s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', '', '', '', '', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '', 'G.711-a law、G.711-u law、G.726'),
-('BHOS2F4II66', 'SONY 1/2.7″CMOS', '', '1920×1080 (2MP)', '2 megapixel and following 25 frame(full-time), support 1~25 fps  is adjustable;', 'Color 0.1Lux@F1.2,BW0.01 Lux@F1.2;', '4mm、6mm options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', 'n/a', '', 'Rotate mode, Saturation, Brightness, Contrast adjustable by  client software or web browser', '', '', 'H.264/H.265/MJPEG', '32 Kbps~8Mbps', 'Base Line Profile / Main Profile', ''),
+('PHOS2Z20II66M', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON); 0lux with IR', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '100m @ 808nm', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
+('PHOTS2Z200I66M', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20X optical', '', 'F1.6 – F5.0', '65.5-2.11 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx.3s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', '', '', '', '', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '', 'G.711-a law、G.711-u law、G.726'),
+('BHOS2F4II66', 'SONY 1/2.7″CMOS', '', '1920×1080 (2MP)', '2 megapixel and following 25 frame(full-time), support 1~25 fps  is adjustable;', 'Color 0.1Lux@F1.2,BW0.01 Lux@F1.2;', '4mm、6mm options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', 'n/a', '', 'Rotate mode, Saturation, Brightness, Contrast adjustable by  client software or web browser', '', '', 'H.264/H.265/MJPEG', '32 Kbps~8Mbps', 'Base Line Profile / Main Profile', ''),
 ('BHOS-4Z4I-I66', '', '4MP 1/3\" CMOS', '', '', '0lx IR', '2.8-12mm x4  30.9-102.8 degrees', '', '', '', '', '', '', '', '50m', '', '', '', '', '', '120dB', '', 'Auto Exposure, Auto White Balance, Auto and Manual Iris, Back Light Compensation', '', '', 'H264/265/MJPEG', '', 'n/a', 'n/a'),
 ('BHOA-4Z4I-I66', '*', '4MP 1/3\" CMOS', '', '', '0lx IR', '2.8-12mm x4  30.9-102.8 degrees', '', '', '', '', '', '', '', '50m', '', '', '', '', '', '120dB', '', 'Auto Exposure, Auto White Balance, Auto and Manual Iris, Back Light Compensation', '', '', 'H264/265/MJPEG', '', 'n/a', 'n/a'),
 ('BHOS2Z360I68', '1/2\" Sony Exmor CMOS', '2MP', '', '50fps', 'Colour: 0.05Lux; B/W: 0.01Lux', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', 'No IR', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
 ('BHOS2ZV0I68', '1/2.8\" Sony STARVIS CMOS', '2MP or 8MP', '', '25fps', 'Colour: 0.03Lux, B/W: 0.01Lux', '2.8, 2.7-12 or 3.2-10.5mm', '8x', '', 'H: 113.7° / V: 61.5°; H: 108.8°-32.3° / V: 57.2°-18.2°; H: 108.8°-32.3° / V: 57.2°-18.2°; or H: 108.1°-30.3° / V: 56.3°-17.1°', '', '', '', '', 'No IR', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
-('BHOS2Z18OI66', ' SONY 1/2.8″ CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.05Lux@F1.6,  BW  0.01 Lux@F1.6', '4.7 - 84.6 mm motorised zoom lens (x18)', '', 'F1.6 – F3.5', '58.3-3.2 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx. 2.7s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', 'na', '', '', '', 'Micro SD card 128GB', '', '', '', '', '', '', 'H.264/H.265/MJPEG', '32  Kbps~16Mbps', 'na', ''),
+('BHOS2Z18OI66', ' SONY 1/2.8″ CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.05Lux@F1.6,  BW  0.01 Lux@F1.6', '4.7 - 84.6 mm motorised zoom lens (x18)', '', 'F1.6 – F3.5', '58.3-3.2 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx. 2.7s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', 'na', '', '', '', 'Micro SD card 128GB', '', '', '', '', '', '', 'H.264/H.265/MJPEG', '32  Kbps~16Mbps', 'na', ''),
 ('BHOS2Z36II68', '1/2\" Sony Exmor CMOS', '2MP', '', '50fps', 'Colour: 0.05Lux; B/W: 0Lux(IR LED)', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', 'Motorized IR LED 300m', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
 ('BHOTS2Z360I68', '1/2\" Sony Exmor CMOS', '2MP', '', '50fps', 'Colour: 0.05Lux', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', '', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
-('BHTS3F8OI66', '', '', '', 'Main Stream: D1 @ 25fps', '', '', '16x', '', '', '', '', '', '', '', '', '', '', 'Micro SD card 128GB', '', '', '', '', 'Off / On (4 Area, Rectangle)', 'Perimeter, Single Virtual Fences, Double Virtual Fences, Object Left, Object Removed', '', '100Kbps ~ 6Mbps', '1ch Audio In,1ch Audio Out(optional)', ''),
-('DHOS2F4II66', ' SONY1/3″CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.1Lux@F1.1,  BW  0.01 Lux@F1.1;', '4mm、6mm、8mm   Options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', '', '', ' Rotate mode, Saturation, Brightness, Contrast adjustable by client software or web browser', '', '', 'H.264/H.265/MJPEG', '32  Kbps~8Mbps', 'BaseLine  Profile / Main Profile', ''),
+('BHTS3F8OI66', '', '', '', 'Main Stream: D1 @ 25fps', '', '', '16x', '', '', '', '', '', '', '', '', '', '', 'Micro SD card 128GB', '', '', '', '', 'Off / On (4 Area, Rectangle)', 'Perimeter, Single Virtual Fences, Double Virtual Fences, Object Left, Object Removed', '', '100Kbps ~ 6Mbps', '1ch Audio In,1ch Audio Out(optional)', ''),
+('DHOS2F4II66', ' SONY1/3″CMOS Senor CCD', '', '1920×1080 (2MP)', '25fps', 'Color  0.1Lux@F1.1,  BW  0.01 Lux@F1.1;', '4mm、6mm、8mm   Options', '', '', '', '', '', '', '', '15m @ 850nm', '', '', '', '', '', '', '', ' Rotate mode, Saturation, Brightness, Contrast adjustable by client software or web browser', '', '', 'H.264/H.265/MJPEG', '32  Kbps~8Mbps', 'BaseLine  Profile / Main Profile', ''),
 ('THOS-2F3I-I68', '', '2MP  2.8” CMOS', '', '', 'Colour 0.003lx @ F1.2; Mono 0.001lx @ F1.2; 0lx', '2, 2.8, 4, 6 mm  HFOV  126, 108, 86 or 53 degrees', '', '', '', '', '', '', '', 'n/a', '', '', '', 'MicroSD/SDHC/SDXC card up to 128GB', '', '120dB', '', 'Image enhancement: BLC, 3D DNR, HLC, defog, EIS', '', 'Line crossing detection, intrusion detection, region entrance detection, region exit detection, unattended baggage detection, object removal detection', 'H265/265+, H264/264+', '32kbps to 16Mbps', '1 audio input (line in), 1 audio output (line out), mono soundtrack', '8 kHz/16 kHz/32 kHz/44.1 kHZ/48 kHz'),
-('PHOS2Z26OI66', '1/2.8″Progressive  Scan CMOS', '≥1000TVL', '1920×1080 (2MP)', '', 'Color ：0.001Lux @ (F1.5，AGC ON); BW ：0.0001Lux @(F1.5，AGC  ON)', ' 5-130mm, 26x', '16x', 'F1.6-F3.5', '58.3-3.2°(Wide-Tele)', '10-1000mm(Wide-Tele)', 'About 3s(  optional , Wide-Tele)', '', 'Auto / semi  auto / manual', 'na', '', '', '', 'Built in Micro SD card slot,  support SD/SDHC/SDXC Micro card (maximum support 256G),support manual / alarm  video recording', 'Auto/ manual / ATW  / Outdoor / indoor fluorescent lamp / lamp / white balance  white balance', 'Yes', '＞ 52dB', '', 'Yes', '', 'H.264/H.265/MJPEG', '', '', 'G.711/G.726'),
+('PHOS2Z26OI66', '1/2.8″Progressive  Scan CMOS', '≥1000TVL', '1920×1080 (2MP)', '', 'Color ：0.001Lux @ (F1.5，AGC ON); BW ：0.0001Lux @(F1.5，AGC  ON)', ' 5-130mm, 26x', '16x', 'F1.6-F3.5', '58.3-3.2°(Wide-Tele)', '10-1000mm(Wide-Tele)', 'About 3s(  optional , Wide-Tele)', '', 'Auto / semi  auto / manual', 'na', '', '', '', 'Built in Micro SD card slot,  support SD/SDHC/SDXC Micro card (maximum support 256G),support manual / alarm  video recording', 'Auto/ manual / ATW  / Outdoor / indoor fluorescent lamp / lamp / white balance  white balance', 'Yes', '＞ 52dB', '', 'Yes', '', 'H.264/H.265/MJPEG', '', '', 'G.711/G.726'),
 ('PHOS2Z36II68', '1/2\" Sony Exmor CMOS', '2MP', '', '50fps', 'Colour: 0.05Lux; B/W: 0Lux(IR LED)', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', 'Motorized IR LED 300m', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
-('PHOS2Z20II66', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '100m @ 808nm', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
-('PHOS2Z200I66', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
+('PHOS2Z20II66', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '100m @ 808nm', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
+('PHOS2Z200I66', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20x', '16x', 'F1.6-F3.5', '61.4-2.9 ° (Wide-Tele )', '10-1500mm(Wide-Tele)', 'About 2.7 s  (optical ，Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '1ch Audio In,1ch Audio Out(optional)', 'G.711-a law、G.711-u law、G.726'),
 ('PHOS-2Z30O-I69', '', '2.38MP  1/ 2.8” CMOS', '', '', 'Colour 0.006lx @ F1.6; Mono 0.0006lx @ F1.6', 'Motorised x30 zoom 4.3-129mm  HFOV  63.7-2.3 degrees', '', '', '', '', '', '', '', 'n/a', '', 'Yes', '', '', '', '', '', '', '', 'Perimeter, line crossing, loitering, objects left/removed, people, vehicles', 'H264, MPEG4, MJPEG  ONVIF S, T, Q', '100kbps to 12Mbps', '', ''),
 ('PHOTS2Z36II68', '1/2\" Sony Exmor CMOS', '2MP', '', '50fps', 'Colour: 0.05Lux', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', '', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
-('PHOTS2Z200I66', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20X optical', '', 'F1.6 – F5.0', '65.5-2.11 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx.3s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '', 'G.711-a law、G.711-u law、G.726'),
-('BHTS3F8OI66', '', '', '', 'Main Stream: D1 @ 25fps', '', '', '16x', '', '', '', '', '', '', '', '', '', '', 'Micro SD card 128GB', '', '', '', '', 'Off / On (4 Area, Rectangle)', 'Perimeter, Single Virtual Fences, Double Virtual Fences, Object Left, Object Removed', '', '100Kbps ~ 6Mbps', '1ch Audio In,1ch Audio Out(optional)', ''),
+('PHOTS2Z200I66', '1/2.8″ Progressive Scan CMOS', '', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20X optical', '', 'F1.6 – F5.0', '65.5-2.11 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx.3s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', 'PAL/NTSC', '', '', 'Micro SD card 128GB', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '', 'G.711-a law、G.711-u law、G.726'),
+('BHTS3F8OI66', '', '', '', 'Main Stream: D1 @ 25fps', '', '', '16x', '', '', '', '', '', '', '', '', '', '', 'Micro SD card 128GB', '', '', '', '', 'Off / On (4 Area, Rectangle)', 'Perimeter, Single Virtual Fences, Double Virtual Fences, Object Left, Object Removed', '', '100Kbps ~ 6Mbps', '1ch Audio In,1ch Audio Out(optional)', ''),
 ('BSTAIF80I67', 'Uncooled VOx infrared detector', '', 'Effective pixels: 720x480', '25 fps', '', '', 'ePTZ: 20x digital zoom (4x on IE plug-in, 5x built-in)', '', '', '', '', '', '', '', '', '', '', 'Seamless Recording to MicroSD/SDHC/SDXC card and recording to network-attached storage (NAS)', '', '', '', '', '', 'Smart VCA', 'H.265, H.264, MJPEG', '', 'Two-way Audio (full duplex); External microphone input', 'G.726, G.711'),
 ('BHOTS2Z360I68', '1/2\" Sony Exmor CMOS', '2MP', '', '50fps', 'Colour: 0.05Lux', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', '', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
 ('PHOTS2Z36II68', '1/2\" Sony Exmor CMOS', '2MP', '', '50fps', 'Colour: 0.05Lux', 'Optical zoom 36x, 6.0-216mm F1.5', '8x', '', 'H: 56.5°-2.1° / V: 33.6°-1.2°', '', '', '', '', '', '', '', '', '', '', '', '', 'DOL HDR, DNR, BLC, HLC, White balance, Exposure control, Mirror, Flip, Colour Corridor format.', 'Yes', 'Tamper, Video motion detection', 'Simultaneously H.265, H.264 and MJPEG (Triple streaming). Independent Frame Rate and Bandwidth Control, VBR/CBR.', '', '', ''),
-('PHOTS2Z20OI66', '1/2.8″ Progressive Scan CMOS', '2MP', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20X optical', '', 'F1.6 – F5.0', '65.5-2.11 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx.3s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', '', '', '', '', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '', 'G.711-a law、G.711-u law、G.726'),
+('PHOTS2Z20OI66', '1/2.8″ Progressive Scan CMOS', '2MP', '', '', 'Color ：0.05Lux @ (F1.6，AGC ON); BW ：0.01Lux @(F1.6，AGC ON)', '4.7-94mm，20X optical', '', 'F1.6 – F5.0', '65.5-2.11 degree (Wide-Tele)', '10-1500mm(Wide-Tele)', 'Approx.3s(Optical Wide-Tele)', 'Auto exposure  / aperture priority / shutter priority / manual exposure', 'Auto  /manual /one time focusing', '', '', '', '', '', '1/  2Automatic / manual / indoor / outdoor lamp / fluorescent lamp', '', '>52dB', '', '', '', 'H.264 /H.265/MJPEG', '32 Kbps~16Mbps', '', 'G.711-a law、G.711-u law、G.726'),
 ('BSOA8FVII67', '1/2\" Progressive CMOS', '', '3840x2160 (8MP)', '25 fps', '0.02 lux @ F1.5 (colour); 0.01 lux @ F1.5 (B/W); o lux with IR', '3.9 ~ 10 mm Motorized, Vari-focal, Remote Focus', 'ePTZ: 48x digital zoom (4x on IE plug-in, 12x built-in)', 'F1.5 ~ F2.7', '95° ~ 45° (Horizontal)', '', '', '', 'Remote focus, remote zoom', '50m', '', '', '', 'Seamless Recording to MicroSD/SDHC/SDKC card and recording to network-attached storage (NAS)', '', '120 dB', '61 dB', '', '', 'Smart VCA', 'H.265, H.264, MJPEG', '', 'Two-Way Audio (full duplex); External microphone input', 'G.711, G.726'),
 ('DSOA8FVII67', '1/1.8\" Progressive CMOS', '', '3840x2160 (4K/8MP)', '25 fps', '0.28 lux @ F1.5 (colour); <0.005 lux @ F1.5 (B/W); 0 lux with IR', '3.9 ~ 10 mm Motorized, Vari-focal, Remote Focus', '', 'F1.5 ~ F2.7', '119° ~ 45° (Horizontal)', '', '', '', '', '50m', '', '', '', '', '', '120 dB', '53.5 dB', '', '', 'Smart VCA', 'H.265, H.264', '', '', ''),
 ('DSOA12F1II66', '1/2.3\" Progressive CMOS in 4056x3040', '', '2944x2944', '25 fps', '0.1 lux @ F2.0 (colour); <0.005 lux @ F2.0 (B/W); 0 lux with IR', '1.22 mm Fixed-focal', 'ePTZ: 12x digital zoom (12x on IE plug-in)', 'F2.0', '180° (Horizontal)', '', '', '', 'Pixel calculator', '20m', '', '', '', 'Seamless Recording to MicroSD/SDHC/SDXC card and recording to network-attached storage (NAS)', '', '120 dB', '56.9 dB', '10 fisheye views with dewarping', '', 'Smart VCA', 'H.265, H.264, MJPEG', '', 'Two-way audio (Full duplex); Built-in microphone/ext.input', 'G.711, G.726'),
@@ -106,8 +121,9 @@ INSERT INTO `av` (`Product Code`, `Camera`, `Resolution`, `Pixels`, `Frame rate`
 -- Table structure for table `features`
 --
 
+DROP TABLE IF EXISTS `features`;
 CREATE TABLE `features` (
-  `Product Code` varchar(14) DEFAULT NULL,
+  `Product code` varchar(14) DEFAULT NULL,
   `feature 1` varchar(105) DEFAULT NULL,
   `feature 2` varchar(55) DEFAULT NULL,
   `feature 3` varchar(76) DEFAULT NULL,
@@ -131,7 +147,7 @@ CREATE TABLE `features` (
 -- Dumping data for table `features`
 --
 
-INSERT INTO `features` (`Product Code`, `feature 1`, `feature 2`, `feature 3`, `feature 4`, `feature 5`, `feature 6`, `feature 7`, `feature 8`, `feature 9`, `feature 10`, `feature 11`, `feature 12`, `feature 13`, `feature 14`, `feature 15`, `feature 16`, `features concat`) VALUES
+INSERT INTO `features` (`Product code`, `feature 1`, `feature 2`, `feature 3`, `feature 4`, `feature 5`, `feature 6`, `feature 7`, `feature 8`, `feature 9`, `feature 10`, `feature 11`, `feature 12`, `feature 13`, `feature 14`, `feature 15`, `feature 16`, `features concat`) VALUES
 ('BSOS-1Z4I-I68', '4x motorised zoom lens', 'Day/Night switching for almost any lighting condition', 'H264, MJPEG', 'PoE', 'IP68 Stainless steel enclosure for harsh environments', 'IR illumination - range up to 40m', '', '', '', '', '', '', '', '', '', '', 'ï4x motorised zoom lens\nïDay/Night switching for almost any lighting condition\nïH264, MJPEG\nïPoE\nïIP68 Stainless steel enclosure for harsh environments\nïIR illumination - range up to 40m'),
 ('BHOS2F4II66M', '', '', '', 'Marine 316L grade stainless steel', 'Fixed lens - 4/6mm options', 'Support ONVIF, HIKVISION, DAHUA', 'Suited to strong corrosive environments. Anti-corrosion, waterproof.', 'Uses SONY1/3″CMOS Sensor ', 'High quality IR lamp , long service life , low power consumption.  Distance up to 15 meters', 'Windows glass surface process by nano technology . Good light transmittance. ', 'Anti-shock engineering technology', '2MP resolution', '', 'Suited to harsh environmental conditions including petrochemicals, mining, military, medicine, oil & gas, marine, drilling platforms, food processing and storage, offshore etc.', '', '', 'ïMarine 316L grade stainless steel\nïFixed lens - 4/6mm options\nïSupport ONVIF, HIKVISION, DAHUA\nïSuited to strong corrosive environments. Anti-corrosion, waterproof.\nïUses SONY1/3″CMOS Sensor \nïHigh quality IR lamp , long service life , low power consumption.  Distance up to 15 meters\nïWindows glass surface process by nano technology . Good light transmittance. \nïAnti-shock engineering technology\nï2MP resolution\nïSuited to harsh environmental conditions including petrochemicals, mining, military, medicine, oil & gas, marine, drilling platforms, food processing and storage, offshore etc.'),
 ('BSOS12F28II67', 'AISI 316L Electro Polished Stainless Steel', '2MP or 8MP resolution', 'IR LED Upto 30M', 'Various Lens Options (Fixed & vari-focal)', 'Shock and Vibration Tested', 'Tempered Glass', '12VDC / POE', 'IP67', '-40°C~60°C', '', '', '', '', '', '', '', 'ïAISI 316L Electro Polished Stainless Steel\nï2MP or 8MP resolution\nïIR LED Upto 30M\nïVarious Lens Options (Fixed & vari-focal)\nïShock and Vibration Tested\nïTempered Glass\nï12VDC / POE\nïIP67\nï-40°C~60°C'),
@@ -186,11 +202,12 @@ INSERT INTO `features` (`Product Code`, `feature 1`, `feature 2`, `feature 3`, `
 -- Table structure for table `info`
 --
 
+DROP TABLE IF EXISTS `info`;
 CREATE TABLE `info` (
   `Movement` varchar(5) DEFAULT NULL,
   `Category` varchar(10) DEFAULT NULL,
   `Additional Category` varchar(9) DEFAULT NULL,
-  `Product Code` varchar(14) DEFAULT NULL,
+  `Product code` varchar(14) DEFAULT NULL,
   `product name` varchar(72) DEFAULT NULL,
   `image location (if used)` varchar(16) DEFAULT NULL,
   `image` varchar(13) DEFAULT NULL,
@@ -224,7 +241,7 @@ CREATE TABLE `info` (
 -- Dumping data for table `info`
 --
 
-INSERT INTO `info` (`Movement`, `Category`, `Additional Category`, `Product Code`, `product name`, `image location (if used)`, `image`, `technical_image`, `technical_image_2`, `technical_image_3`, `description (as text)`, `Cost price Euro`, `Cost price £`, `Manufacturer`, `features`, `feature 1`, `feature 2`, `feature 3`, `feature 4`, `feature 5`, `feature 6`, `feature 7`, `feature 8`, `feature 9`, `feature 10`, `feature 11`, `feature 12`, `feature 13`, `feature 14`, `feature 15`, `feature 16`) VALUES
+INSERT INTO `info` (`Movement`, `Category`, `Additional Category`, `Product code`, `product name`, `image location (if used)`, `image`, `technical_image`, `technical_image_2`, `technical_image_3`, `description (as text)`, `Cost price Euro`, `Cost price £`, `Manufacturer`, `features`, `feature 1`, `feature 2`, `feature 3`, `feature 4`, `feature 5`, `feature 6`, `feature 7`, `feature 8`, `feature 9`, `feature 10`, `feature 11`, `feature 12`, `feature 13`, `feature 14`, `feature 15`, `feature 16`) VALUES
 ('FIXED', 'marine', '', 'BSOS-1Z4I-I68', 'Marine Fixed Bullet Stainless Steel Camera ', 'example location', '', '', '', '', 'The BSOS-1Z4I-I68 is a high-quality, 720p HD resolution colour video camera with a 4x motorized zoom lens and auto-iris. It includes integrated IR LEDs for operation at 0 lux.\nThis high-resolution camera supports multiple streams and resolutions in MJPEG or H.264 codec. The zoom lens is remotely adjustable from 2.8 to 12.0 mm, to provide a horizontal field-of-view of up to 100 degrees.\nThe camera is housed in a stainless-steel bullet rated IP68. It comes ready for mounting and requires only a PoE network connection. It is designed for use in onshore, offshore, marine and heavy industrial environments including passenger ships & commercial vessels.  ', '', '500.64', 'IV&C', '', '4x motorised zoom lens', 'Day/Night switching for almost any lighting condition', 'H264, MJPEG', 'PoE', 'IP68 Stainless steel enclosure for harsh environments', 'IR illumination - range up to 40m', '', '', '', '', '', '', '', '', '', ''),
 ('FIXED', 'marine', '', 'BHOS2F4II66M', 'Marine bullet camera - stainless steel construction', '', '', '', '', '', 'This compact camera provides a fixed angle view in 2MP HD video. It is housed in a heavy-duty, stainless steel, weatherproof enclosure suitable for hostile environments. It is ready for mounting, requiring only power and an IP connection. A wall mount arm is provided. Other mounting options are available.  It can be used in Marine and Offshore environments. For example, passenger ships, bridges and engine rooms.  It offers a choice of lenses/viewing angles.   It\'s small volume and light weight makes it particularly suitable for applications where a small form factor is required.', '310.00', '£251.10', '', '', '', '', '', 'Marine 316L grade stainless steel', 'Fixed lens - 4/6mm options', 'Support ONVIF, HIKVISION, DAHUA', 'Suited to strong corrosive environments. Anti-corrosion, waterproof.', 'Uses SONY1/3″CMOS Sensor ', 'High quality IR lamp , long service life , low power consumption.  Distance up to 15 meters', 'Windows glass surface process by nano technology . Good light transmittance. ', 'Anti-shock engineering technology', '2MP resolution', '', 'Suited to harsh environmental conditions including petrochemicals, mining, military, medicine, oil & gas, marine, drilling platforms, food processing and storage, offshore etc.', '', ''),
 ('FIXED', 'marine', '', 'BSOS12F28II67', 'Marine fixed camera with IR - stainless steel construction', '', '', 'Not available', '', '', 'This is a high-quality 2MP HD resolution colour video camera with choice of fixed or vari-focal lens and 2MP or 8MP resolution. It includes integrated IR LEDs for operation at 0 lux at upto 30m.  The vari-focal lens is adjustable from 2.8 to 12.0 mm, to provide a horizontal field-of-view of up to 100 degrees.\nThe camera is housed in a stainless-steel bullet rated to IP67. It comes ready for mounting and requires only a PoE network connection (or 12vdc).  It is designed for use in onshore, offshore, marine and heavy industrial environments including passenger ships & commercial vessels.  ', '614', '£528.04', 'ArgesMarine', '', 'AISI 316L Electro Polished Stainless Steel', '2MP or 8MP resolution', 'IR LED Upto 30M', 'Various Lens Options (Fixed & vari-focal)', 'Shock and Vibration Tested', 'Tempered Glass', '12VDC / POE', 'IP67', '-40°C~60°C', '', '', '', '', '', '', ''),
@@ -279,8 +296,9 @@ INSERT INTO `info` (`Movement`, `Category`, `Additional Category`, `Product Code
 -- Table structure for table `pan_tilt`
 --
 
+DROP TABLE IF EXISTS `pan_tilt`;
 CREATE TABLE `pan_tilt` (
-  `product Code` varchar(14) DEFAULT NULL,
+  `product code` varchar(14) DEFAULT NULL,
   `Pan-Range` varchar(35) DEFAULT NULL,
   `Pan-Speed` varchar(64) DEFAULT NULL,
   `Tilt-Range` varchar(28) DEFAULT NULL,
@@ -294,7 +312,7 @@ CREATE TABLE `pan_tilt` (
 -- Dumping data for table `pan_tilt`
 --
 
-INSERT INTO `pan_tilt` (`product Code`, `Pan-Range`, `Pan-Speed`, `Tilt-Range`, `Tilt-Speed`, `Pre-Sets`, `Pre-Set Tours`, `Motion Tracking`) VALUES
+INSERT INTO `pan_tilt` (`product code`, `Pan-Range`, `Pan-Speed`, `Tilt-Range`, `Tilt-Speed`, `Pre-Sets`, `Pre-Set Tours`, `Motion Tracking`) VALUES
 ('BSOS-1Z4I-I68', 'na', 'na', 'na', 'na', 'na', 'na', 'na'),
 ('BHOS2F4II66M', 'na', 'na', 'na', 'na', 'na', 'na', 'na'),
 ('BSOS12F28II67', 'na', 'na', 'na', 'na', 'na', 'na', 'na'),
@@ -305,14 +323,14 @@ INSERT INTO `pan_tilt` (`product Code`, `Pan-Range`, `Pan-Speed`, `Tilt-Range`, 
 ('DHOS2F4II66M', 'na', 'na', 'na', 'na', 'na', 'na', 'na'),
 ('BHOS2Z18OI66M', 'na', 'na', 'na', 'na', 'na', 'na', 'na'),
 ('BHTS3F8OI66M', '', '', '', '', '', '', ''),
-('PHOS2Z260I66M', '360°', 'Horizontal rotation speed：0.1°-250°/s, rotation speed can be set', '-18°-90°', 'Vertical rotation speed：0.1°-150°/s, rotation speed can be set; Verticalpreset  rotation speed：200°/s', '', '', ''),
+('PHOS2Z260I66M', '360°', 'Horizontal rotation speed：0.1°-250°/s, rotation speed can be set', '-18°-90°', 'Vertical rotation speed：0.1°-150°/s, rotation speed can be set; Verticalpreset  rotation speed：200°/s', '', '', ''),
 ('DSOS2Z200I67', 'Pan: 360° endless, Tilt: -10°-+190°', 'Pan/tilt speed: max. 380° / sec', '', '', 'Preset: 256, Tour: 8, Pattern: 8', '', ''),
 ('PSOA-3Z30-XI68', '', '', '', '', '', '', ''),
 ('PSOS-3Z30-XI68', '', '', '', '', '', '', ''),
-('PHOS2Z200I66M', 'Horizontal ：0～360°Vertical:   ：±90°', '0.1°/S~40°/s ', '', '0.1°/S~40°/s', '300', '', ''),
+('PHOS2Z200I66M', 'Horizontal ：0～360°Vertical:   ：±90°', '0.1°/S~40°/s ', '', '0.1°/S~40°/s', '300', '', ''),
 ('PSOS2Z36II67', 'Pan: 360° endless, Tilt: ±90°', '1.8°-30°/sec', '', '1.8°-30°/sec', 'Preset: 226', '', ''),
-('PHOS2Z20II66M', 'Horizontal ：0～360°Vertical:   ：±90°', '0.1°/S~40°/s ', '', '0.1°/S~40°/s', '300', '', ''),
-('PHOTS2Z200I66M', 'Horizontal ：0～360°', '', 'Vertical:   ：±90°', '', '', '', ''),
+('PHOS2Z20II66M', 'Horizontal ：0～360°Vertical:   ：±90°', '0.1°/S~40°/s ', '', '0.1°/S~40°/s', '300', '', ''),
+('PHOTS2Z200I66M', 'Horizontal ：0～360°', '', 'Vertical:   ：±90°', '', '', '', ''),
 ('BHOS2F4II66', '', '', '', '', '', '', ''),
 ('BHOS-4Z4I-I66', '', '', '', '', '', '', ''),
 ('BHOA-4Z4I-I66', '', '', '', '', '', '', ''),
@@ -324,18 +342,18 @@ INSERT INTO `pan_tilt` (`product Code`, `Pan-Range`, `Pan-Speed`, `Tilt-Range`, 
 ('BHTS3F8OI66', '', '', '', '', '', '', ''),
 ('DHOS2F4II66', '', '', '', '', '', '', ''),
 ('THOS-2F3I-I68', '', '', '', '', '', '', ''),
-('PHOS2Z26OI66', '360°', 'Horizontal rotation speed：0.1°-250°/s, rotation speed can be set', '-18°-90°', 'Vertical rotation speed：0.1°-150°/s, rotation speed can be set; Verticalpreset  rotation speed：200°/s', '1024', '', ''),
+('PHOS2Z26OI66', '360°', 'Horizontal rotation speed：0.1°-250°/s, rotation speed can be set', '-18°-90°', 'Vertical rotation speed：0.1°-150°/s, rotation speed can be set; Verticalpreset  rotation speed：200°/s', '1024', '', ''),
 ('PHOS2Z36II68', 'Pan: 360° endless, Tilt: ±90°', 'Pan/tilt speed: 1.8°-20°/sec', '', '', 'Preset: 256', '', ''),
-('PHOS2Z20II66', 'Horizontal ：0～360°Vertical:   ：±90°', 'Horizontal ：0.1°/S~40°/s Vertical:   ：0.1°/S~40°/s', '', '', '300', '', ''),
-('PHOS2Z200I66', 'Horizontal ：0～360°Vertical:   ：±90°', 'Horizontal ：0.1°/S~40°/s Vertical:   ：0.1°/S~40°/s', 'Vertical:   ：±90°', '', '300', '', ''),
+('PHOS2Z20II66', 'Horizontal ：0～360°Vertical:   ：±90°', 'Horizontal ：0.1°/S~40°/s Vertical:   ：0.1°/S~40°/s', '', '', '300', '', ''),
+('PHOS2Z200I66', 'Horizontal ：0～360°Vertical:   ：±90°', 'Horizontal ：0.1°/S~40°/s Vertical:   ：0.1°/S~40°/s', 'Vertical:   ：±90°', '', '300', '', ''),
 ('PHOS-2Z30O-I69', '', '', '', '', '', '', ''),
 ('PHOTS2Z36II68', 'Pan: 360° endless, Tilt: ±90°', '', 'Pan/tilt speed: 1.8°-20°/sec', '', '', 'Preset: 256', ''),
-('PHOTS2Z200I66', 'Horizontal ：0～360°', '', 'Vertical:   ：±90°', '', '', '', ''),
+('PHOTS2Z200I66', 'Horizontal ：0～360°', '', 'Vertical:   ：±90°', '', '', '', ''),
 ('BHTS3F8OI66', '', '', '', '', '', '', ''),
 ('BSTAIF80I67', '', '', '', '', '', '', ''),
 ('BHOTS2Z360I68', '', '', '', '', '', '', ''),
 ('PHOTS2Z36II68', 'Pan: 360° endless, Tilt: ±90°', '', 'Pan/tilt speed: 1.8°-20°/sec', '', '', 'Preset: 256', ''),
-('PHOTS2Z20OI66', 'Horizontal ：0～360°', '', 'Vertical:   ：±90°', '', '', '', ''),
+('PHOTS2Z20OI66', 'Horizontal ：0～360°', '', 'Vertical:   ：±90°', '', '', '', ''),
 ('BSOA8FVII67', '', '', '', '', '', '', ''),
 ('DSOA8FVII67', '353°', '', '180°', '', '', '', ''),
 ('DSOA12F1II66', '', '', '', '', '', '', ''),
@@ -349,8 +367,9 @@ INSERT INTO `pan_tilt` (`product Code`, `Pan-Range`, `Pan-Speed`, `Tilt-Range`, 
 -- Table structure for table `physical`
 --
 
+DROP TABLE IF EXISTS `physical`;
 CREATE TABLE `physical` (
-  `Product Code` varchar(14) DEFAULT NULL,
+  `Product code` varchar(14) DEFAULT NULL,
   `Material` varchar(42) DEFAULT NULL,
   `Colour` varchar(10) DEFAULT NULL,
   `Operating temp` varchar(45) DEFAULT NULL,
@@ -367,48 +386,48 @@ CREATE TABLE `physical` (
 -- Dumping data for table `physical`
 --
 
-INSERT INTO `physical` (`Product Code`, `Material`, `Colour`, `Operating temp`, `Relative humidity`, `Atmospheric pressure`, `Weight (kg)`, `Dimensions - external (mm)`, `Dimensions - internal (mm)`, `Cable entry`, `Mounting options`) VALUES
+INSERT INTO `physical` (`Product code`, `Material`, `Colour`, `Operating temp`, `Relative humidity`, `Atmospheric pressure`, `Weight (kg)`, `Dimensions - external (mm)`, `Dimensions - internal (mm)`, `Cable entry`, `Mounting options`) VALUES
 ('BSOS-1Z4I-I68', 'Aluminuim', '', '-40 to +60 deg C ', '', '', '1.8kg', '85 x 127', '', '', 'Wall hanging, fixed bracket , pedestal base'),
-('BHOS2F4II66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 83  117L   110H', '', '1pcs M20*1.5 output(original G1/2)', 'Wall hanging, fixed bracket , pedestal base'),
+('BHOS2F4II66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 83  117L   110H', '', '1pcs M20*1.5 output(original G1/2)', 'Wall hanging, fixed bracket , pedestal base'),
 ('BSOS12F28II67', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 2.5Kg', '109(W)x132.5(H)x124(D)mm', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('BSOS2FV0I66', 'AISI 316L Electro Polished Stainless Steel', '', '-20°C - +60°C', '0-90% RH(Non-condensing)', '', 'About 2.9Kg', 'TBD', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('BSOA-2Z4I-I67', 'Aluminuim', '', '-40 to +60 deg C ', '< 90%', '', '5kg including bracket (approx..)', '', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('BSOS12F20I66', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'TBD', 'TBD', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('DSOS-1Z4I-I68', 'Aluminuim', '', '-10 to +50 deg C ', '', '', '1.3kg', '118W x 88H x 80dia', '', '', 'Wall hanging, fixed bracket , pedestal base'),
-('DHOS2F4II66M', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5   147.5H', '', '1pcs M20*1.5(original 1* G1/2″ )', 'Wall hanging, fixed bracket , pedestal base'),
-('BHOS2Z18OI66M', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Φ162×457.5mm(length )', 'Φ90.5×309.5mm(length )', '2pcs M25*1.5 output (original G3/4″ )', 'Wall hanging, fixed bracket , pedestal base, PTZ'),
+('DHOS2F4II66M', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5   147.5H', '', '1pcs M20*1.5(original 1* G1/2″ )', 'Wall hanging, fixed bracket , pedestal base'),
+('BHOS2Z18OI66M', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Φ162×457.5mm(length )', 'Φ90.5×309.5mm(length )', '2pcs M25*1.5 output (original G3/4″ )', 'Wall hanging, fixed bracket , pedestal base, PTZ'),
 ('BHTS3F8OI66M', '316L stainless steel', '', '-40°C ~ 60°C (-40°F ~ 140°F)', '', '', '', '380mm*143mm*151mm', 'Φ108×300mm (length)', '2pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOS2Z260I66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5 (6 inch dome) 189.6 H', '', '1pcs M25*1.5 output(original G3/4), M32 option', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOS2Z260I66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5 (6 inch dome) 189.6 H', '', '1pcs M25*1.5 output(original G3/4), M32 option', 'Wall hanging, fixed bracket , pedestal base'),
 ('DSOS2Z200I67', 'AISI 316L Electro Polished Stainless Steel', '', '-30°C - +50°C', '0-90% RH(Non-condensing)', '', 'Approx. 4.3Kg', '185(W)x160(H)x185(D)mm', '', 'One 3/4\" NPT conduit entries', 'Wall hanging, fixed bracket , pedestal base'),
 ('PSOA-3Z30-XI68', 'Aluminuim', '', '-40 to +70 deg C (white or grey paint finish)', '', '', '5.2kg without lamps; 5.8kg with lamps', '191W x 342H', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('PSOS-3Z30-XI68', 'Stainless steel', '', '-40 to +70 deg C (white or grey paint finish)', '', '', '14kg without lamps; 18kg with lamps. ', '313W x 386H x 214D', '', '', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOS2Z200I66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOS2Z200I66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
 ('PSOS2Z36II67', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 18Kg', '320(W)x345(H)x299(D)mm', '', '', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOS2Z20II66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOTS2Z200I66M', '316L stainless steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
-('BHOS2F4II66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 83  117L   110H', '', '1pcs M20*1.5 output(original G1/2)', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOS2Z20II66M', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOTS2Z200I66M', '316L stainless steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
+('BHOS2F4II66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 83  117L   110H', '', '1pcs M20*1.5 output(original G1/2)', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHOS-4Z4I-I66', 'Aluminuim', '', '-30 to +60 deg C ', '', '', '4.62kg', '140H x 140W x 203D', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHOA-4Z4I-I66', 'Aluminuim', '', '-30 to +60 deg C ', '', '', '3.67kg', '140H x 140W x 197 D', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHOS2Z360I68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 6Kg', '121(W)x178(H)x250(D)mm', '', 'One conduit entry', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHOS2ZV0I68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 6Kg', '121(W)x178(H)x250(D)mm', '', 'One conduit entry', 'Wall hanging, fixed bracket , pedestal base'),
-('BHOS2Z18OI66', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Φ162×457.5mm(length )', 'Φ90.5×309.5mm(length )', '2pcs M25*1.5 output (original G3/4″ )', 'Wall hanging, fixed bracket , pedestal base, PTZ'),
+('BHOS2Z18OI66', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Φ162×457.5mm(length )', 'Φ90.5×309.5mm(length )', '2pcs M25*1.5 output (original G3/4″ )', 'Wall hanging, fixed bracket , pedestal base, PTZ'),
 ('BHOS2Z36II68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 10Kg', '244(W)x237.5(H)x270(D)mm', '', 'Two M25 conduit entries', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHOTS2Z360I68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 10Kg', '244(W)x237.5(H)x270(D)mm', '', 'Two M25 conduit entries', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHTS3F8OI66', '316L stainless steel', '', '-40°C ~ 60°C (-40°F ~ 140°F)', '', '', '', '380mm*143mm*151mm', 'Φ108×300mm (length)', '2pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
-('DHOS2F4II66', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5   147.5H', '', '1pcs M20*1.5(original 1* G1/2″ )', 'Wall hanging, fixed bracket , pedestal base'),
+('DHOS2F4II66', '316L stainless  steel', '', '-40℃～60℃', '≤95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5   147.5H', '', '1pcs M20*1.5(original 1* G1/2″ )', 'Wall hanging, fixed bracket , pedestal base'),
 ('THOS-2F3I-I68', '316L Stainless steel', '', '-40 to +60 deg C ', '95% or less (non-condensing)', '', '2.5', '138dia × 123.4 mm', '', '', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOS2Z26OI66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5 (6 inch dome) 189.6 H', '', '1pcs M25*1.5 output(original G3/4), M32 option', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOS2Z26OI66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', 'Dia 157.5 (6 inch dome) 189.6 H', '', '1pcs M25*1.5 output(original G3/4), M32 option', 'Wall hanging, fixed bracket , pedestal base'),
 ('PHOS2Z36II68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 32Kg', '353(W)x412(H)x210(D)mm', '', 'Two M25 conduit entries', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOS2Z20II66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOS2Z200I66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOS2Z20II66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOS2Z200I66', '316L stainless  steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
 ('PHOS-2Z30O-I69', 'Aluminuim', '', '-40 to +80 deg C ', '', '', '26.5kg ', '', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('PHOTS2Z36II68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 32Kg', '353(W)x412(H)x210(D)mm', '', 'Two M25 conduit entries', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOTS2Z200I66', '316L stainless steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOTS2Z200I66', '316L stainless steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHTS3F8OI66', '316L stainless steel', '', '-40°C ~ 60°C (-40°F ~ 140°F)', '', '', '', '380mm*143mm*151mm', 'Φ108×300mm (length)', '2pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
 ('BSTAIF80I67', '', '', '-50°C ~ 60°C (-58°F ~ 140°F)', '90%', '', '2,115 g', '121 x 121 x 471.2 mm (with junction box)', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('BHOTS2Z360I68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 10Kg', '244(W)x237.5(H)x270(D)mm', '', 'Two M25 conduit entries', 'Wall hanging, fixed bracket , pedestal base'),
 ('PHOTS2Z36II68', 'AISI 316L Electro Polished Stainless Steel', '', '-40°C - +60°C', '0-90% RH(Non-condensing)', '', 'Approx. 32Kg', '353(W)x412(H)x210(D)mm', '', 'Two M25 conduit entries', 'Wall hanging, fixed bracket , pedestal base'),
-('PHOTS2Z20OI66', '316L stainless steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
+('PHOTS2Z20OI66', '316L stainless steel', '', '-40℃～60℃', '≤ 95%（+25°C）', '80kpa～106 kpa', '', '', '', '1pcs M25*1.5 output(original G3/4)', 'Wall hanging, fixed bracket , pedestal base'),
 ('BSOA8FVII67', '', '', '-50°C ~ 50°C (-58°F ~ 122°F) (IR on)', '95%', '', '2.2 kg', '121 x 121 x 394 mm (w/ junction box)', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('DSOA8FVII67', '', '', '-50°C ~ 60°C (-58°F ~ 140°F) (IR off)', '90%', '', '1,343 g', 'Ø 155 x 138 mm', '', '', 'Wall hanging, fixed bracket , pedestal base'),
 ('DSOA12F1II66', '', '', '-40°C ~ 50°C (-40°F ~ 122°F) (IR on)', '90% RH (non-condensing)', '', '701 g', 'ø 150 x 68.2 mm', '', '', 'Ceiling or wall mount'),
@@ -422,6 +441,7 @@ INSERT INTO `physical` (`Product Code`, `Material`, `Colour`, `Operating temp`, 
 -- Table structure for table `power`
 --
 
+DROP TABLE IF EXISTS `power`;
 CREATE TABLE `power` (
   `COL 1` varchar(14) DEFAULT NULL,
   `COL 2` varchar(42) DEFAULT NULL,
@@ -438,7 +458,7 @@ CREATE TABLE `power` (
 --
 
 INSERT INTO `power` (`COL 1`, `COL 2`, `COL 3`, `COL 4`, `COL 5`, `COL 6`, `COL 7`, `COL 8`) VALUES
-('Product Code', 'Ethernet', 'RS485', 'BNC Output', 'Alarm in/out', 'Audio in/out connector', 'Power supply', 'Power consumption'),
+('Product code', 'Ethernet', 'RS485', 'BNC Output', 'Alarm in/out', 'Audio in/out connector', 'Power supply', 'Power consumption'),
 ('BSOS-1Z4I-I68', 'Ethernet RJ-45(10/100/1000Base-T)', '', '', 'n/a', '', '12vdc/PoE  <10W', '<10W'),
 ('BHOS2F4II66M', 'Ethernet RJ-45(10/100/1000Base-T)', '', '', '', '', 'DC12V/POE(Optional)', ''),
 ('BSOS12F28II67', 'Ethernet RJ-45(10/100/1000Base-T)', '', '', '', '', '12VDC / POE', '250mA(12W)@PoE, 1A (12W)'),

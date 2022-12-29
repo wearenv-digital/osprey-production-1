@@ -14,6 +14,10 @@ router.get('/', breadcrumbs.Middleware(), (req, res) => {
 	res.render('index', { breadcrumbs: req.breadcrumbs });
 });
 
+router.get('127.0.0.1', breadcrumbs.Middleware(), (req, res) => {
+	res.render('index', { breadcrumbs: req.breadcrumbs });
+});
+
 router.get('/product-page', async (req, res) => {
 	try {
 		let results = await controllers.getAll();
