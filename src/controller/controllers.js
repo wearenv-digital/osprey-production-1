@@ -54,6 +54,25 @@ async function getAll(query) {
 	}
 }
 
+async function getNewNames() {
+	try {
+		let results = await db.all('SELECT product_name, product_code FROM cam_info;');
+		return results;
+	} catch (e) {
+		return console.log(e);
+	}
+}
+
+async function getNames() {
+	try {
+		let results = await db.all('SELECT product_name, product_code FROM cam_info;');
+		return results;
+	} catch (e) {
+		return console.log(e);
+	}
+}
+
+
 // var camInfo = {};
 // var camSpecs = {};
 // var audioVideo = {};
