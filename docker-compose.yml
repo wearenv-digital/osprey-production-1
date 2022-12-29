@@ -6,7 +6,7 @@ volumes:
 networks:
   traefik-proxy:
     name: traefik-proxy
-  backend:
+  # backend:
 
 
 services:
@@ -75,7 +75,6 @@ services:
 
   sql:
     build: ./src/sql/
-    # user: "1000:50"
     container_name: sql
     restart: unless-stopped
     command: mysqld --general-log=1 --general-log-file=/var/lib/mysql/general-log.log --max_allowed_packet=1073741824 --lower_case_table_names=1
@@ -90,7 +89,6 @@ services:
       - ./db:/var/lib/mysql
       - ./src/sql/logs:/var/log/*
     networks:
-      backend:
       traefik-proxy:
         aliases:
           - test.sql.docker
@@ -107,30 +105,12 @@ services:
       PMA_USER: $DB_USER
       PMA_PASSWORD: $DB_PASSWORD
       MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
-
     networks:
       - traefik-proxy
-      - backend
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-proxy
       - traefik.http.routers.osprey-pma.rule=Host(`pma.localhost`)
-
-  # dbadmin:
-  #   container_name: db_admin
-  #   image: adminer:latest
-  #   depends_on:
-  #     - sql
-  #   environment:
-  #     ADMINER_DEFAULT_DB_HOST: sql
-  #     ADMINER_DEFAULT_DB_NAME: osprey
-  #   networks:
-  #     - traefik-proxy
-  #     - backend
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.osprey-dba.rule=Host(`dba.localhost`)
 
 
 
