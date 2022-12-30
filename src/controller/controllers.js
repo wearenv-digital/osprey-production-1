@@ -20,6 +20,11 @@ function removeFirst(obj) {
 	return obj;
 }
 
+function removeProductCode(obj) {
+	delete obj['product_code'];
+	return obj;
+}
+
 function removeProp(obj,key) {
 	delete obj[0][key];
 	return obj;
@@ -189,6 +194,7 @@ async function getElecPhys(req) {
 module.exports = {
 	removeFirst,
 	removeProdCode,
+	removeProductCode,
 	removeProp,
 	finalObjCreator,
 	filterDead,

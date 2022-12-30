@@ -63,26 +63,31 @@ router.get(
 			power = power[0];
 			certs = certs[0];
 
-			var dataObj = {};
+			// var dataObj = {};
 
-			dataObj.camInfo = camInfo;
-			dataObj.movement = movement;
-			dataObj.allFeatures = camFeatures;
-			dataObj.camFeaturesConcat = camFeaturesConcat;
-			dataObj.audioVideo = audioVideo;
-			dataObj.physical = physical;
-			dataObj.power = power;
-			dataObj.certs = certs;
+			// dataObj.camInfo = camInfo;
+			// dataObj.movement = movement;
+			// dataObj.allFeatures = camFeatures;
+			// dataObj.camFeaturesConcat = camFeaturesConcat;
+			// dataObj.audioVideo = audioVideo;
+			// dataObj.physical = physical;
+			// dataObj.power = power;
+			// dataObj.certs = certs;
 
 			// movement = controllers.removeFirst(movement);
 
 			allFeatures = controllers.removeFirst(allFeatures);
+			movement = controllers.removeProductCode(movement);
+			physical = controllers.removeProductCode(physical);
+			audioVideo = controllers.removeProductCode(audioVideo);
+			power = controllers.removeProductCode(power);
+			certs = controllers.removeProductCode(certs);
 
 			noConcat = controllers.removeProp(allFeatures, `features_concat`);
 			noConcat = noConcat[0];
 
 			let allInfoKeys = controllers.listAllKeys(camInfo);
-			let allMovementKeys = controllers.listAllKeys(movement);
+			// let allMovementKeys = controllers.listAllKeys(movement);
 			let allFeatureKeys = controllers.listAllKeys(noConcat);
 			let allAvKeys = controllers.listAllKeys(audioVideo);
 			let allPhysKeys = controllers.listAllKeys(physical);
@@ -98,7 +103,7 @@ router.get(
 			let deadCertsKeys = controllers.filterDead(certs);
 
 			let allInfoVals = controllers.listAllVals(camInfo);
-			let allMovementVals = controllers.listAllVals(movement);
+			// let allMovementVals = controllers.listAllVals(movement);
 			let allFeaturesVals = controllers.listAllVals(noConcat);
 			let allAvVals = controllers.listAllVals(audioVideo);
 			let allPhysVals = controllers.listAllVals(physical);
@@ -106,7 +111,7 @@ router.get(
 			let allCertsVals = controllers.listAllVals(certs);
 
 			let newInfoKeys = [];
-			let newMovementKeys = [];
+			// let newMovementKeys = [];
 			let newFeaturesOnlyKeys = [];
 			let newAvKeys = [];
 			let newPhysKeys = [];
@@ -127,19 +132,19 @@ router.get(
 				return prev;
 			}, []);
 
-			newMovementKeys = allMovementKeys.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadMovementKeys.length; i++) {
-					if (value === deadMovementKeys[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
+			// newMovementKeys = allMovementKeys.reduce(function (prev, value) {
+			// 	var isDuplicate = false;
+			// 	for (var i = 0; i < deadMovementKeys.length; i++) {
+			// 		if (value === deadMovementKeys[i]) {
+			// 			isDuplicate = true;
+			// 			break;
+			// 		}
+			// 	}
+			// 	if (!isDuplicate) {
+			// 		prev.push(value);
+			// 	}
+			// 	return prev;
+			// }, []);
 
 			console.log(movement);
 
@@ -214,7 +219,7 @@ router.get(
 			}, []);
 
 			let newInfoVals = [];
-			let newMovementVals = [];
+			// let newMovementVals = [];
 			let newFeaturesOnlyVals = [];
 			let newAvVals = [];
 			let newPhysVals = [];
@@ -236,19 +241,19 @@ router.get(
 				return prev;
 			}, []);
 
-			newMovementVals = allMovementVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < constDeadVals.length; i++) {
-					if (value === constDeadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
+			// newMovementVals = allMovementVals.reduce(function (prev, value) {
+			// 	var isDuplicate = false;
+			// 	for (var i = 0; i < constDeadVals.length; i++) {
+			// 		if (value === constDeadVals[i]) {
+			// 			isDuplicate = true;
+			// 			break;
+			// 		}
+			// 	}
+			// 	if (!isDuplicate) {
+			// 		prev.push(value);
+			// 	}
+			// 	return prev;
+			// }, []);
 
 			newFeaturesOnlyVals = allFeaturesVals.reduce(function (prev, value) {
 				var isDuplicate = false;
@@ -328,17 +333,41 @@ router.get(
 			let finalPower = {};
 			let finalCerts = {};
 
+			finalInfo = Object.fromEntries(
+				newInfoKeys.map((a, i) => [a, newInfoVals[i]])
+			);
+
 			finalFeatures = Object.fromEntries(
 				newFeaturesOnlyKeys.map((a, i) => [a, newFeaturesOnlyVals[i]])
 			);
 
-			console.log(finalFeatures);
-
 			finalAV = Object.fromEntries(newAvKeys.map((a, i) => [a, newAvVals[i]]));
+
+			finalPhys = Object.fromEntries(
+				newPhysKeys.map((a, i) => [a, newPhysVals[i]])
+			);
+
+			finalPower = Object.fromEntries(
+				newPowerKeys.map((a, i) => [a, newPowerVals[i]])
+			);
+
+			finalCerts = Object.fromEntries(
+				newCertsKeys.map((a, i) => [a, newCertsVals[i]])
+			);
+
+			let finalObj = {};
+
+			finalObj.info = finalInfo;
+			finalObj.movement = movement;
+			finalObj.features = finalFeatures;
+			finalObj.AV = finalAV;
+			finalObj.physical = finalPhys;
+			finalObj.power = finalPower;
+			finalObj.certs = finalCerts;
 
 			// console.log(allFeatures.length);
 
-			res.send(newFeaturesOnlyKeys);
+			res.send(finalObj);
 			return;
 
 			res.send(dataObj);
