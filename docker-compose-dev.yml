@@ -99,41 +99,41 @@ services:
           - test.sql.docker
 
 
-  # dbadmin:
-  #   container_name: db_admin
-  #   image: adminer:latest
+  # # dbadmin:
+  # #   container_name: db_admin
+  # #   image: adminer:latest
+  # #   depends_on:
+  # #     - sql
+  # #   environment:
+  # #     ADMINER_DEFAULT_DB_HOST: sql
+  # #     ADMINER_DEFAULT_DB_NAME: osprey
+
+  # #   networks:
+  # #     - traefik-proxy
+  # #     - backend
+
+  # #   # Traefik Stuff
+  # #   labels:
+  # #     - traefik.enable=true
+  # #     - traefik.docker.network=traefik-proxy
+  # #     - traefik.http.routers.osprey-dba.rule=Host(`dba.3.11.230.233`)
+
+
+  # phpmyadmin:
+  #   container_name: php_myadmin
+  #   restart: always
+  #   image: phpmyadmin:latest
   #   depends_on:
   #     - sql
   #   environment:
-  #     ADMINER_DEFAULT_DB_HOST: sql
-  #     ADMINER_DEFAULT_DB_NAME: osprey
-
+  #     PMA_ARBITRARY: 1
+  #     PMA_HOST: sql
+  #     PMA_USER: $DB_USER
+  #     PMA_PASSWORD: $DB_PASSWORD
+  #     MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
   #   networks:
   #     - traefik-proxy
-  #     - backend
-
-  #   # Traefik Stuff
   #   labels:
   #     - traefik.enable=true
   #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.osprey-dba.rule=Host(`dba.3.11.230.233`)
-
-
-  phpmyadmin:
-    container_name: php_myadmin
-    restart: always
-    image: phpmyadmin:latest
-    depends_on:
-      - sql
-    environment:
-      PMA_ARBITRARY: 1
-      PMA_HOST: sql
-      PMA_USER: $DB_USER
-      PMA_PASSWORD: $DB_PASSWORD
-      MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
-    networks:
-      - traefik-proxy
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-proxy
-      - traefik.http.routers.osprey-pma.rule=Host(`pma.3.11.230.233`)
+  #     - traefik.http.routers.osprey-pma.rule=Host(`pma.3.11.230.233`)
