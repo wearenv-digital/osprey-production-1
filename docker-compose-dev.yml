@@ -32,24 +32,24 @@ services:
     volumes:
       - ./src:/app/src:ro
 
-  # webserver:
-  #   container_name: webserver
-  #   image: httpd:latest
-  #   ports:
-  #     - 8080:80
+  webserver:
+    container_name: webserver
+    image: httpd:latest
+    ports:
+      - 8080:80
 
-  #   # Traefik Stuff
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.apache.rule=Host(`apache.docker`)
-  #     - traefik.http.routers.apache.entrypoints=web
-  #     - traefik.port=80
-  #   volumes:
-  #     - ./apache/httpd.conf:/conf/httpd.conf
-  #   networks:
-  #     - traefik-proxy
-  #     - backend
+    # Traefik Stuff
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.apache.rule=Host(`apache.docker`)
+      - traefik.http.routers.apache.entrypoints=web
+      - traefik.port=80
+    volumes:
+      - ./apache/httpd.conf:/conf/httpd.conf
+    networks:
+      - traefik-proxy
+      - backend
 
 # for production
 # make sure traefik.toml IS NOT INSECURE
