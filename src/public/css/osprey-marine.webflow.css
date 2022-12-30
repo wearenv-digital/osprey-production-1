@@ -1548,7 +1548,14 @@ img.bollard-image {
 	display: -ms-flexbox;
 	flex-direction: column;
 	padding: 0, 100, 0, 100px;
-	padding-left: 100px
+	/* padding-left: 100px */
+}
+
+
+.w--tab-active {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
 }
 
 h4.specs-subheading {
@@ -1556,7 +1563,12 @@ h4.specs-subheading {
 }
 
 .spec-row {
-	height: 1.2em
+	height: 1.6em;
+}
+
+td.key-data,
+td.val-data {
+	border-bottom: 1px solid #333
 }
 
 td.key-data {
@@ -4953,6 +4965,8 @@ nav.breadcrumb-nav>ul>li {
 
 .section-4 {
 	padding-top: 44px;
+	padding-left: 1em;
+	padding-right: 1em;
 	-webkit-box-orient: vertical;
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
@@ -5012,6 +5026,10 @@ nav.breadcrumb-nav>ul>li {
 	margin-left: 20px
 }
 
+span.product_code {
+	font-size: 14px;
+}
+
 
 .list-item.space {
 	margin-right: 10px;
@@ -5062,6 +5080,23 @@ img.product-list-image {
 .div-block-2,
 .div-block-3 {
 	min-width: 100%
+}
+
+.div-block-3 {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.link-block-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+
+	max-width: 100%;
+
+	padding-right: 1rem;
+
 }
 
 /* .tab-link-tab-1 {
@@ -6252,14 +6287,22 @@ input.search-input:focus-visible {
 
 .div-block-61 {
 	background-color: #ff001b;
+	border: 1px solid #ff001b;
+	border-radius: 25px;
 }
+
+
 
 .div-block-61.email {
 	background-color: #80c950;
+	border: 1px solid #80c950;
+	border-radius: 25px;
 }
 
 .div-block-61.phone {
 	background-color: #ffb82d;
+	border: 1px solid #ffb82d;
+	border-radius: 25px;
 }
 
 a#link3,
@@ -8093,14 +8136,7 @@ input.submit-btn {
 
 }
 
-.link-block-wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
 
-	max-width: 100%;
-
-}
 
 .w-tab-menu {
 	width: 100%;
@@ -8125,6 +8161,7 @@ input.submit-btn {
 	.product-container {
 		width: 100%;
 		padding: 15px 0;
+
 	}
 
 	.image-bullet-wrapper {
@@ -8240,7 +8277,8 @@ nav.breadcrumb-product-page {
 #gallery-resources,
 #knowledge-centre-resources,
 #tools-resources,
-#press-resources {
+#press-resources,
+#marine-cameras {
 	margin-top: -130px;
 }
 

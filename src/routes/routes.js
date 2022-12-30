@@ -87,7 +87,7 @@ router.get(
 			noConcat = noConcat[0];
 
 			let allInfoKeys = controllers.listAllKeys(camInfo);
-			// let allMovementKeys = controllers.listAllKeys(movement);
+			let allMovementKeys = controllers.listAllKeys(movement);
 			let allFeatureKeys = controllers.listAllKeys(noConcat);
 			let allAvKeys = controllers.listAllKeys(audioVideo);
 			let allPhysKeys = controllers.listAllKeys(physical);
@@ -103,7 +103,7 @@ router.get(
 			let deadCertsKeys = controllers.filterDead(certs);
 
 			let allInfoVals = controllers.listAllVals(camInfo);
-			// let allMovementVals = controllers.listAllVals(movement);
+			let allMovementVals = controllers.listAllVals(movement);
 			let allFeaturesVals = controllers.listAllVals(noConcat);
 			let allAvVals = controllers.listAllVals(audioVideo);
 			let allPhysVals = controllers.listAllVals(physical);
@@ -111,7 +111,7 @@ router.get(
 			let allCertsVals = controllers.listAllVals(certs);
 
 			let newInfoKeys = [];
-			// let newMovementKeys = [];
+			let newMovementKeys = [];
 			let newFeaturesOnlyKeys = [];
 			let newAvKeys = [];
 			let newPhysKeys = [];
@@ -132,21 +132,19 @@ router.get(
 				return prev;
 			}, []);
 
-			// newMovementKeys = allMovementKeys.reduce(function (prev, value) {
-			// 	var isDuplicate = false;
-			// 	for (var i = 0; i < deadMovementKeys.length; i++) {
-			// 		if (value === deadMovementKeys[i]) {
-			// 			isDuplicate = true;
-			// 			break;
-			// 		}
-			// 	}
-			// 	if (!isDuplicate) {
-			// 		prev.push(value);
-			// 	}
-			// 	return prev;
-			// }, []);
-
-			console.log(movement);
+			newMovementKeys = allMovementKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadMovementKeys.length; i++) {
+					if (value === deadMovementKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
 
 			newFeaturesOnlyKeys = allFeatureKeys.reduce(function (prev, value) {
 				var isDuplicate = false;
@@ -219,7 +217,7 @@ router.get(
 			}, []);
 
 			let newInfoVals = [];
-			// let newMovementVals = [];
+			let newMovementVals = [];
 			let newFeaturesOnlyVals = [];
 			let newAvVals = [];
 			let newPhysVals = [];
@@ -241,19 +239,19 @@ router.get(
 				return prev;
 			}, []);
 
-			// newMovementVals = allMovementVals.reduce(function (prev, value) {
-			// 	var isDuplicate = false;
-			// 	for (var i = 0; i < constDeadVals.length; i++) {
-			// 		if (value === constDeadVals[i]) {
-			// 			isDuplicate = true;
-			// 			break;
-			// 		}
-			// 	}
-			// 	if (!isDuplicate) {
-			// 		prev.push(value);
-			// 	}
-			// 	return prev;
-			// }, []);
+			newMovementVals = allMovementVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
 
 			newFeaturesOnlyVals = allFeaturesVals.reduce(function (prev, value) {
 				var isDuplicate = false;
@@ -337,6 +335,10 @@ router.get(
 				newInfoKeys.map((a, i) => [a, newInfoVals[i]])
 			);
 
+			finalMovement = Object.fromEntries(
+				newMovementKeys.map((a, i) => [a, newMovementVals[i]])
+			);
+
 			finalFeatures = Object.fromEntries(
 				newFeaturesOnlyKeys.map((a, i) => [a, newFeaturesOnlyVals[i]])
 			);
@@ -355,376 +357,81 @@ router.get(
 				newCertsKeys.map((a, i) => [a, newCertsVals[i]])
 			);
 
+			let featuresArray = [];
+			let movementArray = [];
+			let avArray = [];
+			let physArray = [];
+			let powerArray = [];
+			let certsArray = [];
+
+			Object.values(finalFeatures).forEach(val => {
+				featuresArray.push(val);
+			});
+			Object.values(finalMovement).forEach(val => {
+				movementArray.push(val);
+			});
+			Object.values(finalAV).forEach(val => {
+				avArray.push(val);
+			});
+			Object.values(finalPhys).forEach(val => {
+				physArray.push(val);
+			});
+
+			Object.values(finalPower).forEach(val => {
+				powerArray.push(val);
+			});
+
+			Object.values(finalCerts).forEach(val => {
+				certsArray.push(val);
+			});
+
+			function isArrayEmpty(array) {
+				let constError = 'No Data Available';
+				if (array.length < 1) {
+					array.push(constError);
+				} else {
+					array = array;
+				}
+			}
+
+			// console.log(Object.entries(finalMovement).length);
+			// res.send(finalMovement);
+			// return
+			// // isArrayEmpty()
+
 			let finalObj = {};
 
 			finalObj.info = finalInfo;
-			finalObj.movement = movement;
+			finalObj.movement = finalMovement;
 			finalObj.features = finalFeatures;
 			finalObj.AV = finalAV;
 			finalObj.physical = finalPhys;
 			finalObj.power = finalPower;
 			finalObj.certs = finalCerts;
 
+			// res.send(finalInfo.description);
+			// return;
+
 			// console.log(allFeatures.length);
 
-			res.send(finalObj);
-			return;
+			// res.send(finalObj);
 
-			res.send(dataObj);
+			// return;
+			// console.log(av.length);
+
+			res.render('product-page-with-partials', {
+				data: finalObj,
+				av: finalAV,
+				movement: finalMovement,
+				physical: finalPhys,
+				power: finalPower,
+				certs: finalCerts,
+				features: featuresArray,
+				breadcrumbs: req.breadcrumbs
+			});
 		} catch (e) {
 			console.log(e);
 			return res.render('index');
-		}
-	}
-);
-
-//
-//
-//
-//
-//
-//
-//
-
-router.get(
-	'/product-page/:product_code',
-	breadcrumbs.Middleware(),
-	async (req, res) => {
-		try {
-			var camInfo = {};
-			var camFeatures = {};
-			var camSpecs = {};
-			var audioVideo = {};
-			var automation = {};
-			var elecPhys = {};
-			var description = {};
-
-			camInfo = await controllers.getInfo(req);
-			camFeatures = await controllers.getFeatures(req);
-			camSpecs = await controllers.getCamSpecs(req);
-			audioVideo = await controllers.getAudioVideo(req);
-			automation = await controllers.getAutomation(req);
-			elecPhys = await controllers.getElecPhys(req);
-			description = await controllers.getDesc(req);
-
-			camFeatures = controllers.removeFirst(camFeatures);
-			camSpecs = controllers.removeFirst(camSpecs);
-			audioVideo = controllers.removeFirst(audioVideo);
-			automation = controllers.removeFirst(automation);
-			elecPhys = controllers.removeFirst(elecPhys);
-
-			var description = description[0];
-			camInfo = camInfo[0];
-			camFeatures = camFeatures[0];
-			camSpecs = camSpecs[0];
-			audioVideo = audioVideo[0];
-			automation = automation[0];
-			elecPhys = elecPhys[0];
-
-			var allInfoKeys = controllers.listAllKeys(camInfo);
-			var allFeatureKeys = controllers.listAllKeys(camFeatures);
-			var allAvKeys = controllers.listAllKeys(audioVideo);
-			var allSpecsKeys = controllers.listAllKeys(camSpecs);
-			var allAutoKeys = controllers.listAllKeys(automation);
-			var allElecKeys = controllers.listAllKeys(elecPhys);
-
-			var deadInfoKeys = controllers.filterDead(camInfo);
-			var deadFeaturekeys = controllers.filterDead(camFeatures);
-			var deadSpecsKeys = controllers.filterDead(camSpecs);
-			var deadAvKeys = controllers.filterDead(audioVideo);
-			var deadAutoKeys = controllers.filterDead(automation);
-			var deadElecKeys = controllers.filterDead(elecPhys);
-
-			var allInfoVals = controllers.listAllVals(camInfo);
-			var allFeaturesVals = controllers.listAllVals(camFeatures);
-			var allSpecsVals = controllers.listAllVals(camSpecs);
-			var allAvVals = controllers.listAllVals(audioVideo);
-			var allAutoVals = controllers.listAllVals(automation);
-			var allElecVals = controllers.listAllVals(elecPhys);
-
-			var newInfoKeys = [];
-			var newFeaturesKeys = [];
-			var newSpecsKeys = [];
-			var newAvKeys = [];
-			var newAutoKeys = [];
-			var newElecKeys = [];
-
-			newInfoKeys = allInfoKeys.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadInfoKeys.length; i++) {
-					if (value === deadInfoKeys[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			newFeaturesKeys = allFeatureKeys.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadFeaturekeys.length; i++) {
-					if (value === deadFeaturekeys[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			newSpecsKeys = allSpecsKeys.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadSpecsKeys.length; i++) {
-					if (value === deadSpecsKeys[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			newAvKeys = allAvKeys.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadAvKeys.length; i++) {
-					if (value === deadAvKeys[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			newAutoKeys = allAutoKeys.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadAutoKeys.length; i++) {
-					if (value === deadAutoKeys[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			newElecKeys = allElecKeys.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadElecKeys.length; i++) {
-					if (value === deadElecKeys[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			var newInfoVals = [];
-			var newFeaturesVals = [];
-			var newSpecsVals = [];
-			var newAvVals = [];
-			var newAutoVals = [];
-			var newElecVals = [];
-			const deadVals = ['*', 'n/a', ''];
-
-			newInfoVals = allInfoVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadVals.length; i++) {
-					if (value === deadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			newFeaturesVals = allFeaturesVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadVals.length; i++) {
-					if (value === deadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			// Get good specs values by comparing to deadVals
-			newSpecsVals = allSpecsVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadVals.length; i++) {
-					if (value === deadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			// get good AV Values by comparing to deadVal
-
-			newAvVals = allAvVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadVals.length; i++) {
-					if (value === deadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			// Get good automation values by cmparing to deadVals
-
-			newAutoVals = allAutoVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadVals.length; i++) {
-					if (value === deadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			// Get good ElecPhys values by comparing to deadVals
-
-			newElecVals = allElecVals.reduce(function (prev, value) {
-				var isDuplicate = false;
-				for (var i = 0; i < deadVals.length; i++) {
-					if (value === deadVals[i]) {
-						isDuplicate = true;
-						break;
-					}
-				}
-				if (!isDuplicate) {
-					prev.push(value);
-				}
-				return prev;
-			}, []);
-
-			var finalInfo = {};
-			var finalSpecs = {};
-			var finalFeatures = {};
-			var finalAv = {};
-			var finalAutomation = {};
-			var finalElecPhys = {};
-
-			function finalObjCreator(newKeys, newVals) {
-				var obj = {};
-				obj = newKeys.forEach((key, index) => {
-					obj[key] = newVals[index];
-				});
-				return obj;
-			}
-			// Object.fromEntries(arr1.map((a, i) => [a, arr2[i]]));
-
-			finalAv = Object.fromEntries(newAvKeys.map((a, i) => [a, newAvVals[i]]));
-
-			finalSpecs = Object.fromEntries(
-				newSpecsKeys.map((a, i) => [a, newSpecsVals[i]])
-			);
-
-			finalFeatures = Object.fromEntries(
-				newFeaturesKeys.map((a, i) => [a, newFeaturesVals[i]])
-			);
-
-			finalInfo = Object.fromEntries(
-				newInfoKeys.map((a, i) => [a, newInfoVals[i]])
-			);
-
-			finalAutomation = Object.fromEntries(
-				newAutoKeys.map((a, i) => [a, newAutoVals[i]])
-			);
-
-			finalElecPhys = Object.fromEntries(
-				newElecKeys.map((a, i) => [a, newElecVals[i]])
-			);
-
-			// res.send(finalFeatures);
-			// return;
-
-			// res.send(finalElecPhys);
-			// res.send(finalAv)
-			// res.send(finalSpecs)
-
-			var finalObj = {};
-
-			finalObj.features = finalFeatures;
-			finalObj.info = finalInfo;
-			finalObj.specs = finalSpecs;
-			finalObj.av = finalAv;
-			finalObj.automation = finalAutomation;
-			finalObj.elecPhys = finalElecPhys;
-
-			// res.send(finalInfo)
-			// return;
-
-			var finalArr = [];
-			finalArr.push(finalFeatures);
-			finalArr.push(finalInfo);
-			finalArr.push(finalAv);
-			finalArr.push(finalAutomation);
-			finalArr.push(finalElecPhys);
-
-			description = Object.values(description);
-
-			var data = {};
-
-			data = {
-				features: finalFeatures,
-				dataObj: finalObj,
-				dataArr: finalArr,
-				description: description
-			};
-
-			data.product_code = finalObj.info.product_code;
-			// res.send(data);
-			// return
-			res.render('product-page-with-partials', {
-				features: newFeaturesVals,
-				description: description,
-				data: data,
-				specs: finalSpecs,
-				av: finalAv,
-				auto: finalAutomation,
-				elecPhys: finalElecPhys,
-				info: finalInfo,
-				breadcrumbs: req.breadcrumbs
-			});
-			return;
-		} catch (e) {
-			console.log(e);
-			return res.render('index.ejs');
 		}
 	}
 );
@@ -752,9 +459,8 @@ router.get('/about', breadcrumbs.Middleware(), (req, res) => {
 router.get('/marine', breadcrumbs.Middleware(), async (req, res) => {
 	try {
 		var data = {};
-		var sqlQuery =
-			'SELECT product_name, product_code, image_link FROM cam_info WHERE category = "marine" ';
-		data = await controllers.getNamesQuery(sqlQuery);
+		var sqlQuery = 'SELECT * FROM info WHERE category = "marine" ';
+		data = await dbQuery.genericQuery(sqlQuery);
 	} catch (error) {
 		consolee.log(error);
 	}
@@ -780,9 +486,8 @@ router.get('/security', breadcrumbs.Middleware(), (req, res) => {
 router.get('/hazardous-areas', breadcrumbs.Middleware(), async (req, res) => {
 	try {
 		var data = {};
-		var sqlQuery =
-			'SELECT product_name, product_code, image_link FROM cam_info WHERE category = "hazard" ';
-		data = await controllers.getNamesQuery(sqlQuery);
+		var sqlQuery = 'SELECT * FROM info WHERE category = "hazardous" ';
+		data = await dbQuery.genericQuery(sqlQuery);
 	} catch (error) {
 		consolee.log(error);
 	}
@@ -895,18 +600,18 @@ router.get(
 	breadcrumbs.Middleware(),
 	async (req, res) => {
 		try {
-			var data = {};
-			var sqlQuery =
-				'SELECT product_name, product_code, image_link FROM cam_info WHERE category = "marine" ';
-			data = await controllers.getNamesQuery(sqlQuery);
+			let data = {};
+			let sqlQuery =
+				'SELECT `product_name`, `product_code`, image FROM info WHERE category = "marine" ';
+			data = await dbQuery.genericQuery(sqlQuery);
+
+			res.render('marine-cameras', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
 		} catch (error) {
 			consolee.log(error);
 		}
-
-		res.render('marine-cameras', {
-			data: data,
-			breadcrumbs: req.breadcrumbs
-		});
 	}
 );
 
@@ -916,9 +621,8 @@ router.get(
 	async (req, res) => {
 		try {
 			var data = {};
-			var sqlQuery =
-				'SELECT product_name, product_code, image_link FROM cam_info WHERE category = "hazard" ';
-			data = await controllers.getNamesQuery(sqlQuery);
+			var sqlQuery = 'SELECT *_link FROM info WHERE category = "hazard" ';
+			data = await dbQuery.genericQuery(sqlQuery);
 		} catch (error) {
 			consolee.log(error);
 		}

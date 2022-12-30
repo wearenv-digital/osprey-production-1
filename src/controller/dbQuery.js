@@ -20,10 +20,9 @@ async function getAllInfo(req) {
 
 async function getAllFeatures(req) {
 	try {
-		results = await db.id(
-			'SELECT * FROM features WHERE product_code = ?',
-			[req.params.product_code]
-		);
+		results = await db.id('SELECT * FROM features WHERE product_code = ?', [
+			req.params.product_code
+		]);
 		return results;
 	} catch (e) {
 		console.log(e);
@@ -112,6 +111,15 @@ async function getCerts(req) {
 }
 
 
+async function genericQuery(sqlQuery) {
+	try {
+		let results = await db.all(sqlQuery);
+		return results;
+	} catch (e) {
+		return console.log(e);
+	}
+}
+
 
 module.exports = {
 	getAllInfo,
@@ -121,5 +129,6 @@ module.exports = {
 	getConcatFeatures,
 	getPhysical,
 	getPower,
-	getCerts
+	getCerts,
+	genericQuery
 };

@@ -46,22 +46,41 @@
 				</div>
 				<div class="section-4 wf-section">
 					<div class="div-block-3">
+						<div class="link-block-wrapper">
+							<a href="#" class="link-block-2 link-block-3 w-inline-block" id="link1">
+								<div class="div-block-61">
+									<img src="/public/images/icons/pound.png" loading="lazy" alt="" class="image-12" />
+									<h4 class="heading-13">Get a Quote</h4>
+								</div>
+							</a>
+							<a href="" id="link3">
+								<div class="div-block-61 email">
+									<img src="/public/images/icons/icon-envelope.png" loading="lazy" sizes="30px" alt=""
+										class="image-12" />
+									<h4 class="heading-13">Send an Email</h4>
+								</div>
+							</a>
+							<a href="" id="link4">
+								<div class="div-block-61 phone">
+									<img src="/public/images/icons/phone.png" loading="lazy" sizes="30px" alt="" class="image-12" />
+									<h4 class="heading-13">Phone Us</h4>
+								</div>
+							</a>
+						</div>
 						<div class="main-wrapper">
 							<div class="product-container">
 								<div class="w-dyn-list">
 									<div role="list" class="w-dyn-items">
 										<div role="listitem" class="collection-item w-dyn-item">
 											<h1 class="product-name-h1">
-												<%= data.dataObj.info.product_name %>
+												<%= data.info.product_name %>
 											</h1>
 											<h4 class="product-code-h4"></h4>
 											<div class="image-bullet-wrapper">
 												<div class="image-frame" id="main-product-image">
 													<span class="helper-frame">
-														<img src="<%= info.image_link %>" loading="lazy" width="345" height="345"
-															sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-															srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w"
-															alt="" class="product-image main-product-img" />
+														<img src="<%= data.info.image_link %>" loading="lazy" width="345" height="345"
+															alt="<%= data.info.product_name %>" class="product-image main-product-img" />
 													</span>
 												</div>
 												<div class="bullet-wrapper">
@@ -72,204 +91,193 @@
 															<% }) %>
 													</ul>
 												</div>
-												<div class="link-block-wrapper">
-													<a href="#" class="link-block-2 link-block-3 w-inline-block" id="link1">
-														<div class="div-block-61">
-															<img src="/public/images/icons/pound.png" loading="lazy" alt="" class="image-12" />
-															<h4 class="heading-13">Get a Quote</h4>
-														</div>
-													</a>
-													<a href="" id="link3">
-														<div class="div-block-61 email">
-															<img src="/public/images/icons/icon-envelope.png" loading="lazy" sizes="30px" alt=""
-																class="image-12" />
-															<h4 class="heading-13">Send an Email</h4>
-														</div>
-													</a>
-													<a href="" id="link4">
-														<div class="div-block-61 phone">
-															<img src="/public/images/icons/phone.png" loading="lazy" sizes="30px" alt=""
-																class="image-12" />
-															<h4 class="heading-13">Phone Us</h4>
-														</div>
-													</a>
-												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="div-block-2">
-								<div data-current="Specification" data-easing="ease" data-duration-in="300" data-duration-out="100"
-									class="tabs w-tabs">
-									<div class="tabs-menu w-tab-menu">
-										<a data-w-tab="Description" class="tab-link-tab-1 w-inline-block w-tab-link">
-											<div class="tabtxt">Description</div>
-										</a>
-										<a data-w-tab="Specification" class="tabspec w-inline-block w-tab-link w--current">
-											<div class="tabtxt">Specification</div>
-										</a>
-										<a data-w-tab="Images" class="tabimg w-inline-block w-tab-link">
-											<div class="tabtxt">Gallery</div>
-										</a>
-										<a data-w-tab="Links &amp; downloads" class="tab-link-tab-2 w-inline-block w-tab-link">
-											<div class="tabtxt">Downloads</div>
-										</a>
-									</div>
-									<div class="tabs-content w-tab-content">
-										<div data-w-tab="Description" class="tab-pane-tab-1 w-tab-pane">
-											<div class="description-heading">
-												<h3 class="desc-heading">
-													<%= data.dataObj.info.product_name %>
-														<br>
-												</h3>
-												<h4>
-													<%= data.dataObj.info.product_code %>
-												</h4>
-												<div class="description-content">
-													<p>
-														<%= description %>
-													</p>
-												</div>
-											</div>
+						</div>
+					</div>
+					<div class="div-block-2">
+						<div data-current="Specification" data-easing="ease" data-duration-in="300" data-duration-out="100"
+							class="tabs w-tabs">
+							<div class="tabs-menu w-tab-menu">
+								<a data-w-tab="Description" class="tab-link-tab-1 w-inline-block w-tab-link">
+									<div class="tabtxt">Description</div>
+								</a>
+								<a data-w-tab="Specification" class="tabspec w-inline-block w-tab-link w--current">
+									<div class="tabtxt">Specification</div>
+								</a>
+								<a data-w-tab="Images" class="tabimg w-inline-block w-tab-link">
+									<div class="tabtxt">Gallery</div>
+								</a>
+								<a data-w-tab="Links &amp; downloads" class="tab-link-tab-2 w-inline-block w-tab-link">
+									<div class="tabtxt">Downloads</div>
+								</a>
+							</div>
+							<div class="tabs-content w-tab-content">
+								<div data-w-tab="Description" class="tab-pane-tab-1 w-tab-pane">
+									<div class="description-heading">
+										<h3 class="desc-heading">
+											<%= data.info.product_name %>
+												<br>
+										</h3>
+										<h4>
+											<%= data.info.product_code %>
+										</h4>
+										<div class="description-content">
+											<p>
+												<%= data.info.description%>
+											</p>
 										</div>
-										<div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
-											<div class="specs-container">
-												<table class="spec-table">
-													<tbody>
+									</div>
+								</div>
+								<div data-w-tab="Specification" class="tab-2 w-tab-pane w--tab-active">
+									<div class="specs-container">
+										<table class="spec-table">
+											<tbody>
+												<tr>
+													<th>
+														<h4 class="specs-subheading">Audio Video Specifications</h4>
+													</th>
+												</tr>
+												<tr>
+													<% if (!av) { %>
+														<h3>No Audio Video Data Available</h3>
+														<% } else { %>
+															<% avVal=Object.values(av); %>
+																<% av=Object.keys(av); %>
+																	<% for( let i=0; i < av.length; i++ ) { %>
+												<tr class="spec-row">
+													<td class="key-data spec-keys">
+														<%= av[i] %>
+													</td>
+													<td class="val-data spec-vals">
+														<%= avVal[i] %>
+													</td>
+												</tr>
+												<% } %>
+													<% } %>
+														</tr>
 														<tr>
 															<th>
-																<h4 class="specs-subheading">Device Specifications</h4>
+																<h4 class="specs-subheading">Movement and Control</h4>
 															</th>
 														</tr>
 														<tr>
-															<% specsVal=Object.values(specs); %>
-																<% specs=Object.keys(specs); %>
-																	<% for( let i=0; i < specs.length; i++ ) { %>
+															<% if (data.info.movement=='fixed' || data.info.movement=='FIXED' ) { %>
+																<td>
+																	<h5 class="data-error">This camera is fixed</h5>
+																</td>
+																<% } else { %>
+																	<% movementVal=Object.values(movement); %>
+																		<% movement=Object.keys(movement); %>
+																			<% for( let i=0; i < movement.length; i++ ) { %>
 														<tr class="spec-row">
-															<td class="key-data spec-keys">
-																<%= specs[i] %>
+															<td class="key-data av-keys">
+																<%= movement[i] %>
 															</td>
-															<td class="val-data spec-vals">
-																<%= specsVal[i] %>
+															<td class="val-data av-vals">
+																<%= movementVal[i] %>
 															</td>
 														</tr>
 														<% } %>
-															</tr>
-															<tr>
-																<th>
-																	<h4 class="specs-subheading">Audio Video Specifications</h4>
-																</th>
-															</tr>
-															<tr>
-																<% avVal=Object.values(av); %>
-																	<% av=Object.keys(av); %>
-																		<% for( let i=0; i < av.length; i++ ) { %>
-															<tr class="spec-row">
-																<td class="key-data av-keys">
-																	<%= av[i] %>
-																</td>
-																<td class="val-data av-vals">
-																	<%= avVal[i] %>
-																</td>
-															</tr>
 															<% } %>
 																<tr>
 																	<th>
-																		<h4 class="specs-subheading">Automation & Event Detection</h4>
+																		<h4 class="specs-subheading">Physial Specifications</h4>
 																	</th>
 																</tr>
 																<tr>
-																	<% autoVal=Object.values(auto); %>
-																		<% auto=Object.keys(auto); %>
-																			<% for( let i=0; i < auto.length; i++ ) { %>
+																	<% physVal=Object.values(physical); %>
+																		<% phys=Object.keys(physical); %>
+																			<% for( let i=0; i < physical.length; i++ ) { %>
 																<tr class="spec-row">
 																	<td class="key-data auto-keys">
-																		<%= auto[i] %>
+																		<%= phys[i] %>
 																	</td>
 																	<td class="val-data auto-vals">
-																		<%= autoVal[i] %>
+																		<%= physVal[i] %>
 																	</td>
 																</tr>
 																<% } %>
 																	<tr>
 																		<th>
-																			<h4 class="specs-subheading">Electrical / Physical Specifications</h4>
+																			<h4 class="specs-subheading">Electrical / Power Specifications</h4>
 																		</th>
 																	</tr>
 																	<tr>
-																		<% elecPhysVal=Object.values(elecPhys); %>
-																			<% elecPhys=Object.keys(elecPhys); %>
-																				<% for( let i=0; i < elecPhys.length; i++ ) { %>
+																		<% powerVal=Object.values(power); %>
+																			<% power=Object.keys(power); %>
+																				<% for( let i=0; i < power.length; i++ ) { %>
 																	<tr class="spec-row">
 																		<td class="key-data elec-keys">
-																			<%= elecPhys[i] %>
+																			<%= power[i] %>
 																		</td>
 																		<td class="val-data elec-vals">
-																			<%= elecPhysVal[i] %>
+																			<%= powerVal[i] %>
 																		</td>
 																	</tr>
 																	<% } %>
 																		</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-										<div data-w-tab="Images" class="tab-pane-tab-2 w-tab-pane">
-											<h3 class="heading-11">Images</h3>
-											<div class="gallery-wrapper">
-												<div id="w-node-bb445dc3-3323-edee-e039-527b8590d68d-d3243517" class="gallery-grid">
-													<% if(data.dataObj.info.image_link ) { %>
-														<img src="<%= data.dataObj.info.image_link %>" loading="lazy" width="345" height="345"
-															sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-															srcset="<%= data.dataObj.info.image_link %> 500w, <%= data.dataObj.info.image_link %> 505w"
-															alt="" class="product-image main-product-img" />
+																		<tr>
+																			<th>
+																				<h4 class="specs-subheading">Certifications and Regulations</h4>
+																			</th>
+																		</tr>
+																		<tr>
+																			<% certsVal=Object.values(certs); %>
+																				<% certs=Object.keys(certs); %>
+																					<% for( let i=0; i < certs.length; i++ ) { %>
+																		<tr class="spec-row">
+																			<td class="key-data elec-keys">
+																				<%= certs[i] %>
+																			</td>
+																			<td class="val-data elec-vals">
+																				<%= certsVal[i] %>
+																			</td>
+																		</tr>
+																		<% } %>
+																			</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div data-w-tab="Images" class="tab-pane-tab-2 w-tab-pane">
+									<h3 class="heading-11">Images</h3>
+									<div class="gallery-wrapper">
+										<div id="w-node-bb445dc3-3323-edee-e039-527b8590d68d-d3243517" class="gallery-grid">
+											<% if(data.info.image_link ) { %>
+												<img src="<%= data.info.image_link %>" loading="lazy" width="345" height="345"
+													alt="<%= data.info.image_link %>" class="product-image main-product-img" />
+												<% }%>
+													<% if(data.info.image_link_2 ) { %>
+														<img src="<%= data.info.image_link_2 %>" loading="lazy" width="345" height="345" alt=""
+															class="product-image main-product-img" />
 														<% }%>
-															<% if(data.dataObj.info.image_link_2 ) { %>
-																<img src="<%= data.dataObj.info.image_link_2 %>" loading="lazy" width="345" height="345"
-																	sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-																	srcset="<%= data.dataObj.info.image_link_2 %> 500w, <%= data.dataObj.info.image_link_2 %> 505w"
+															<% if(data.info.technical_image ) { %>
+																<img src="<%= data.info.technical_image %>" loading="lazy" width="345" height="345"
 																	alt="" class="product-image main-product-img" />
 																<% }%>
-																	<% if(data.dataObj.info.technical_image ) { %>
-																		<img src="<%= data.dataObj.info.technical_image %>" loading="lazy" width="345"
-																			height="345" sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-																			srcset="<%= data.dataObj.info.technical_image %> 500w, <%= data.dataObj.info.technical_image %> 505w"
-																			alt="" class="product-image main-product-img" />
-																		<% }%>
-												</div>
-												<div class="gallery-grid">
-													<% if(data.dataObj.info.technical_image_2 ) { %>
-														<img src="<%= data.dataObj.info.technical_image_2 %>" loading="lazy" width="345"
-															height="345" sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-															srcset="<%= data.dataObj.info.technical_image_2 %> 500w, <%= data.dataObj.info.technical_image_2 %> 505w"
-															alt="" class="product-image main-product-img" />
-														<% }%>
-															<% if(data.dataObj.info.technical_image_3 ) { %>
-																<img src="<%= data.dataObj.info.technical_image_3 %>" loading="lazy" width="345"
-																	height="345" sizes="(max-width: 479px) 300px, (max-width: 767px) 63vw, 345px"
-																	srcset="<%= data.dataObj.info.technical_image_3 %> 500w, <%= data.dataObj.info.technical_image_3 %> 505w"
-																	alt="" class="product-image main-product-img" />
-																<% }%>
-												</div>
-											</div>
-											<% if(data.dataObj.info.video) { %>
-												<div class="gallery-wrapper video">
-													<div class="div-block-9">
-														<h3 class="heading-11">Videos</h3>
-														<div class="w-video w-embed"></div>
-													</div>
-												</div>
-												<% } %>
 										</div>
-										<div data-w-tab="Links &amp; downloads" class="tab-pane-links-downloads w-tab-pane">
-											<div class="div-block-10">
-												<img loading="lazy" src="/public/images/pdf-icon-png-2058.png" alt="" class="image-8" />
-												<h3 class="heading-12">Download Technical Datasheet</h3>
-											</div>
-											<a href="#" class="link-2">Click Here</a>
+										<div class="gallery-grid">
+											<% if(data.info.technical_image_2 ) { %>
+												<img src="<%= data.info.technical_image_2 %>" loading="lazy" width="345" height="345" alt=""
+													class="product-image main-product-img" />
+												<% }%>
+													<% if(data.info.technical_image_3 ) { %>
+														<img src="<%= data.info.technical_image_3 %>" loading="lazy" width="345" height="345" alt=""
+															class="product-image main-product-img" />
+														<% }%>
 										</div>
 									</div>
+								</div>
+								<div data-w-tab="Links &amp; downloads" class="tab-pane-links-downloads w-tab-pane">
+									<div class="div-block-10">
+										<img loading="lazy" src="/public/images/pdf-icon-png-2058.png" alt="" class="image-8" />
+										<h3 class="heading-12">Download Technical Datasheet</h3>
+									</div>
+									<a href="#" class="link-2">Click Here</a>
 								</div>
 							</div>
 						</div>

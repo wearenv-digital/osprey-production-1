@@ -4,10 +4,14 @@
 		<div class="individual-category marine-camera-product main-categories" id="main-categoriesId">
 			<a href="<%= `/product-page/${el.product_code}` %>">
 				<div class="marine">
-					<img class="product-list-image" src="<%=`${el.image_link}` %>" alt="">
+					<img class="product-list-image" src="<%=`${el.image}` %>" alt="">
 				</div>
 				<br>
 				<%= el.product_name %>
+					<br> <br>
+					<span class="product_code">
+						<%= el.product_code %>
+					</span>
 			</a>
 		</div>
 		<% }) %>
