@@ -20,6 +20,11 @@ function removeFirst(obj) {
 	return obj;
 }
 
+function removeProp(obj,key) {
+	delete obj[0][key];
+	return obj;
+}
+
 function filterDead(obj) {
 	deadKeys = Object.keys(obj).filter(
 		k => obj[k] === 'n/a' || obj[k] === '*' || obj[k] === ''
@@ -42,6 +47,14 @@ function listAllKeys(obj) {
 function listAllVals(obj) {
 	allVals = Object.values(obj);
 	return allVals;
+}
+
+function finalObjCreator(newKeys, newVals) {
+	var obj = {};
+	obj = newKeys.forEach((key, index) => {
+		obj[key] = newVals[index];
+	});
+	return obj;
 }
 
 // THIS WORKS
@@ -176,6 +189,8 @@ async function getElecPhys(req) {
 module.exports = {
 	removeFirst,
 	removeProdCode,
+	removeProp,
+	finalObjCreator,
 	filterDead,
 	filterGoodVals,
 	listAllKeys,

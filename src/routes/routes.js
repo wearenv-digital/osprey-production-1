@@ -1,5 +1,6 @@
 const express = require('express');
 const controllers = require('../controller/controllers');
+const dbQuery = require('../controller/dbQuery');
 var breadcrumbs = require('../controller/breadcrumbs');
 const router = express.Router();
 
@@ -23,6 +24,338 @@ router.get('/product-page', async (req, res) => {
 		return res.sendStatus(500);
 	}
 });
+
+//
+//
+// Accessing the new database
+//
+//
+
+router.get(
+	'/product-page/:product_code',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let camInfo = {};
+			let movement = {};
+			let camFeatures = {};
+			let camFeaturesConcat = {};
+			let audioVideo = {};
+			let physical = {};
+			let power = {};
+			let certs = {};
+
+			camInfo = await dbQuery.getAllInfo(req);
+			movement = await dbQuery.getMovement(req);
+			camFeaturesConcat = await dbQuery.getConcatFeatures(req);
+			allFeatures = await dbQuery.getAllFeatures(req);
+			audioVideo = await dbQuery.getAV(req);
+			physical = await dbQuery.getPhysical(req);
+			power = await dbQuery.getPower(req);
+			certs = await dbQuery.getCerts(req);
+
+			camInfo = camInfo[0];
+			movement = movement[0];
+			camFeatures = camFeatures[0];
+			camFeaturesConcat = camFeaturesConcat[0];
+			audioVideo = audioVideo[0];
+			physical = physical[0];
+			power = power[0];
+			certs = certs[0];
+
+			var dataObj = {};
+
+			dataObj.camInfo = camInfo;
+			dataObj.movement = movement;
+			dataObj.allFeatures = camFeatures;
+			dataObj.camFeaturesConcat = camFeaturesConcat;
+			dataObj.audioVideo = audioVideo;
+			dataObj.physical = physical;
+			dataObj.power = power;
+			dataObj.certs = certs;
+
+			// movement = controllers.removeFirst(movement);
+
+			allFeatures = controllers.removeFirst(allFeatures);
+
+			noConcat = controllers.removeProp(allFeatures, `features_concat`);
+			noConcat = noConcat[0];
+
+			let allInfoKeys = controllers.listAllKeys(camInfo);
+			let allMovementKeys = controllers.listAllKeys(movement);
+			let allFeatureKeys = controllers.listAllKeys(noConcat);
+			let allAvKeys = controllers.listAllKeys(audioVideo);
+			let allPhysKeys = controllers.listAllKeys(physical);
+			let allPowerKeys = controllers.listAllKeys(power);
+			let allCertsKeys = controllers.listAllKeys(certs);
+
+			let deadInfoKeys = controllers.filterDead(camInfo);
+			let deadMovementKeys = controllers.filterDead(movement);
+			let deadFeaturekeys = controllers.filterDead(noConcat);
+			let deadAvKeys = controllers.filterDead(audioVideo);
+			let deadPhysicalKeys = controllers.filterDead(physical);
+			let deadPowerKeys = controllers.filterDead(power);
+			let deadCertsKeys = controllers.filterDead(certs);
+
+			let allInfoVals = controllers.listAllVals(camInfo);
+			let allMovementVals = controllers.listAllVals(movement);
+			let allFeaturesVals = controllers.listAllVals(noConcat);
+			let allAvVals = controllers.listAllVals(audioVideo);
+			let allPhysVals = controllers.listAllVals(physical);
+			let allPowerVals = controllers.listAllVals(power);
+			let allCertsVals = controllers.listAllVals(certs);
+
+			let newInfoKeys = [];
+			let newMovementKeys = [];
+			let newFeaturesOnlyKeys = [];
+			let newAvKeys = [];
+			let newPhysKeys = [];
+			let newPowerKeys = [];
+			let newCertsKeys = [];
+
+			newInfoKeys = allInfoKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadInfoKeys.length; i++) {
+					if (value === deadInfoKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newMovementKeys = allMovementKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadMovementKeys.length; i++) {
+					if (value === deadMovementKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			console.log(movement);
+
+			newFeaturesOnlyKeys = allFeatureKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadFeaturekeys.length; i++) {
+					if (value === deadFeaturekeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newAvKeys = allAvKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadAvKeys.length; i++) {
+					if (value === deadAvKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newPhysKeys = allPhysKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPhysicalKeys.length; i++) {
+					if (value === deadPhysicalKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newPowerKeys = allPowerKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPowerKeys.length; i++) {
+					if (value === deadPowerKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newCertsKeys = allCertsKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadCertsKeys.length; i++) {
+					if (value === deadCertsKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newInfoVals = [];
+			let newMovementVals = [];
+			let newFeaturesOnlyVals = [];
+			let newAvVals = [];
+			let newPhysVals = [];
+			let newPowerVals = [];
+			let newCertsVals = [];
+			let constDeadVals = ['*', 'n/a', ''];
+
+			newInfoVals = allInfoVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newMovementVals = allMovementVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newFeaturesOnlyVals = allFeaturesVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newAvVals = allAvVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newPhysVals = allPhysVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newPowerVals = allPowerVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			newCertsVals = allCertsVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let finalInfo = {};
+			let finalMovement = {};
+			let finalFeatures = {};
+			let finalAV = {};
+			let finalPhys = {};
+			let finalPower = {};
+			let finalCerts = {};
+
+			finalFeatures = Object.fromEntries(
+				newFeaturesOnlyKeys.map((a, i) => [a, newFeaturesOnlyVals[i]])
+			);
+
+			console.log(finalFeatures);
+
+			finalAV = Object.fromEntries(newAvKeys.map((a, i) => [a, newAvVals[i]]));
+
+			// console.log(allFeatures.length);
+
+			res.send(newFeaturesOnlyKeys);
+			return;
+
+			res.send(dataObj);
+		} catch (e) {
+			console.log(e);
+			return res.render('index');
+		}
+	}
+);
+
+//
+//
+//
+//
+//
+//
+//
 
 router.get(
 	'/product-page/:product_code',
@@ -287,18 +620,23 @@ router.get(
 			// Object.fromEntries(arr1.map((a, i) => [a, arr2[i]]));
 
 			finalAv = Object.fromEntries(newAvKeys.map((a, i) => [a, newAvVals[i]]));
+
 			finalSpecs = Object.fromEntries(
 				newSpecsKeys.map((a, i) => [a, newSpecsVals[i]])
 			);
+
 			finalFeatures = Object.fromEntries(
 				newFeaturesKeys.map((a, i) => [a, newFeaturesVals[i]])
 			);
+
 			finalInfo = Object.fromEntries(
 				newInfoKeys.map((a, i) => [a, newInfoVals[i]])
 			);
+
 			finalAutomation = Object.fromEntries(
 				newAutoKeys.map((a, i) => [a, newAutoVals[i]])
 			);
+
 			finalElecPhys = Object.fromEntries(
 				newElecKeys.map((a, i) => [a, newElecVals[i]])
 			);
