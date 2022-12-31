@@ -2,6 +2,8 @@ version: '3.7'
 
 volumes:
   db-data:
+  caddy_data:
+  caddy_config:
 
 networks:
   traefik-proxy:
