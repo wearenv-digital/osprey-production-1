@@ -1,0 +1,141 @@
+version: '3.7'
+
+volumes:
+  db-data:
+
+
+networks:
+  traefik-proxy:
+  backend:
+
+
+services:
+
+  node-app:
+    container_name: node-app
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    environment:
+      - NODE_ENV="development"
+    command: node server.js
+
+    # Traefik Stuff
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.node-app.entrypoints=web
+      - traefik.http.routers.node-app.rule=Host(`3.11.230.233`)
+      - traefik.http.services.node-app.loadbalancer.server.port=3030
+    networks:
+      - traefik-proxy
+    volumes:
+      - ./src:/app/src:ro
+
+
+
+  webserver:
+    container_name: webserver
+    image: httpd:latest
+    ports:
+      - 8080:80
+    # Traefik Stuff
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.apache.rule=Host(`apache.docker`)
+      - traefik.http.routers.apache.entrypoints=web
+      - traefik.port=80
+    volumes:
+      - ./apache/httpd.conf:/conf/httpd.conf
+    networks:
+      - traefik-proxy
+      - backend
+
+# for production
+# make sure traefik.toml IS NOT INSECURE
+  traefik:
+    container_name: traefik
+    image: traefik:v2.4
+    restart: always
+    ports:
+      - 80:80
+      - 8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/:/etc/traefik/
+
+    # Traefik Stuff
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.api.rule=Host(`monitor.docker`)
+      - traefik.http.routers.api.entrypoints=web
+      - traefik.http.routers.api.service=api@internal
+      - traefik.http.routers.traefik.rule=Host(`3.11.230.233`)
+      - traefik.http.routers.traefik.entrypoints=web
+      - traefik.port=8080
+    networks:
+      - traefik-proxy
+
+  sql:
+    build: ./src/sql/
+    container_name: sql
+    restart: unless-stopped
+    command: mysqld --general-log=1 --general-log-file=/var/lib/mysql/general-log.log --max_allowed_packet=1073741824 --lower_case_table_names=1
+    environment:
+      MYSQL_DATABASE: 'osprey-all'
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
+      MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./src/sql/logs:/var/log/*
+    networks:
+      backend:
+      traefik-proxy:
+        aliases:
+          - test.sql.docker
+
+
+  # # dbadmin:
+  # #   container_name: db_admin
+  # #   image: adminer:latest
+  # #   depends_on:
+  # #     - sql
+  # #   environment:
+  # #     ADMINER_DEFAULT_DB_HOST: sql
+  # #     ADMINER_DEFAULT_DB_NAME: osprey
+
+  # #   networks:
+  # #     - traefik-proxy
+  # #     - backend
+
+  # #   # Traefik Stuff
+  # #   labels:
+  # #     - traefik.enable=true
+  # #     - traefik.docker.network=traefik-proxy
+  # #     - traefik.http.routers.osprey-dba.rule=Host(`dba.3.11.230.233`)
+
+
+  # phpmyadmin:
+  #   container_name: php_myadmin
+  #   restart: always
+  #   image: phpmyadmin:latest
+  #   depends_on:
+  #     - sql
+  #   environment:
+  #     PMA_ARBITRARY: 1
+  #     PMA_HOST: sql
+  #     PMA_USER: $DB_USER
+  #     PMA_PASSWORD: $DB_PASSWORD
+  #     MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
+  #   networks:
+  #     - traefik-proxy
+  #   labels:
+  #     - traefik.enable=true
+  #     - traefik.docker.network=traefik-proxy
+  #     - traefik.http.routers.osprey-pma.rule=Host(`pma.3.11.230.233`)
