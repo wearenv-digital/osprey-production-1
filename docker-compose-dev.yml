@@ -32,6 +32,18 @@ services:
     volumes:
       - ./src:/app/src:ro
 
+  caddy:
+    image: caddy:latest
+    container_name: caddy-service
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
   webserver:
     container_name: webserver
     image: httpd:latest

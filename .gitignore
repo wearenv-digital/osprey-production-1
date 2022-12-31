@@ -6,6 +6,10 @@
 ./db/*
 db/
 
+Caddyfile
+build.sh
+deploy.sh
+
 src/sql/mysql*
 src/sql/mysql
 src/sql/mysql/*
