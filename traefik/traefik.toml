@@ -7,6 +7,6 @@
 	[providers.docker]
 		watch = true
 		exposedByDefault = false
-		network = "proxy"
+		network = "traefik-proxy"
 [accessLog]
 	filePath = "./logs/access.log"
