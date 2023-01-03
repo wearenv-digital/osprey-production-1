@@ -10,6 +10,7 @@ Caddyfile
 build.sh
 deploy.sh
 GIT_ADD.sh
+undeploy.sh
 
 src/sql/mysql*
 src/sql/mysql
