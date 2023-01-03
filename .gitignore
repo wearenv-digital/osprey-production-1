@@ -9,6 +9,7 @@ db/
 Caddyfile
 build.sh
 deploy.sh
+GIT_ADD.sh
 
 src/sql/mysql*
 src/sql/mysql
