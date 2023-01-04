@@ -10,7 +10,12 @@
 						{
 							"handle": [
 								{
-									"handler": ""
+									"handler": "reverse_proxy",
+									"transport": {
+										"http": {
+											"protocol": "http"
+										}
+									}
 								}
 							]
 						}

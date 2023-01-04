@@ -6,13 +6,14 @@ volumes:
 
 services:
   caddy:
-  image: caddy:latest
-  container_name: caddy-service
-  restart: unless-stopped
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - ./Caddyfile:/etc/caddy/Caddyfile
-    - caddy_data:/data
-    - caddy_config:/config
+    image: caddy:latest
+    container_name: caddy-service
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./caddy.json:/
