@@ -6,7 +6,7 @@
 ./db/*
 db/
 
-Caddyfile
+# Caddyfile
 build.sh
 deploy.sh
 GIT_ADD.sh

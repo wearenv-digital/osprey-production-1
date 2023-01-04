@@ -1,0 +1,25 @@
+{
+	"apps": {
+		"http": {
+			"servers": {
+				"osprey": {
+					"logs": {},
+
+					"listen": [":80"],
+					"routes": [
+						{
+							"handle": [
+								{
+									"handler": ""
+								}
+							]
+						}
+					],
+					"automatic_https": {
+						"disable": true
+					}
+				}
+			}
+		}
+	}
+}
