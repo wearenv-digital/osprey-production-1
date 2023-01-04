@@ -25,73 +25,73 @@ services:
     command: node server.js
 
     # Traefik Stuff
-    # labels:
-    #   - traefik.enable=true
-    #   - traefik.docker.network=traefik-proxy
-    #   - traefik.http.routers.node-app.entrypoints=web
-    #   - traefik.http.routers.node-app.rule=Host(`3.11.230.233`)
-    #   - traefik.http.services.node-app.loadbalancer.server.port=3030
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.node-app.entrypoints=web
+      - traefik.http.routers.node-app.rule=Host(`3.11.230.233`)
+      - traefik.http.services.node-app.loadbalancer.server.port=3030
     networks:
       - traefik-proxy
     volumes:
       - ./src:/app/src:ro
 
-  caddy:
-    image: caddy:latest
-    container_name: caddy-service
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-
-  # webserver:
-  #   container_name: webserver
-  #   image: httpd:latest
+  # caddy:
+  #   image: caddy:latest
+  #   container_name: caddy-service
+  #   restart: unless-stopped
   #   ports:
-  #     - 8080:80
-
-  #   # Traefik Stuff
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.apache.rule=Host(`apache.docker`)
-  #     - traefik.http.routers.apache.entrypoints=web
-  #     - traefik.port=80
+  #     - "80:80"
+  #     - "443:443"
   #   volumes:
-  #     - ./apache/httpd.conf:/conf/httpd.conf
-  #   networks:
-  #     - traefik-proxy
-  #     - backend
+  #     - ./Caddyfile:/etc/caddy/Caddyfile
+  #     - caddy_data:/data
+  #     - caddy_config:/config
+
+  webserver:
+    container_name: webserver
+    image: httpd:latest
+    ports:
+      - 8080:80
+
+    # Traefik Stuff
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.apache.rule=Host(`apache.docker`)
+      - traefik.http.routers.apache.entrypoints=web
+      - traefik.port=80
+    volumes:
+      - ./apache/httpd.conf:/conf/httpd.conf
+    networks:
+      - traefik-proxy
+      - backend
 
 # for production
 # make sure traefik.toml IS NOT INSECURE
-  # traefik:
-  #   container_name: traefik
-  #   image: traefik:v2.4
-  #   restart: always
-  #   ports:
-  #     - 80:80
-  #     - 8080
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock:ro
-  #     - ./traefik/:/etc/traefik/
+  traefik:
+    container_name: traefik
+    image: traefik:v2.4
+    restart: always
+    ports:
+      - 80:80
+      - 8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/:/etc/traefik/
 
-  #   # Traefik Stuff
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.docker.network=traefik-proxy
-  #     - traefik.http.routers.api.rule=Host(`monitor.docker`)
-  #     - traefik.http.routers.api.entrypoints=web
-  #     - traefik.http.routers.api.service=api@internal
-  #     - traefik.http.routers.traefik.rule=Host(`3.11.230.233`)
-  #     - traefik.http.routers.traefik.entrypoints=web
-  #     - traefik.port=8080
-  #   networks:
-  #     - traefik-proxy
+    # Traefik Stuff
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-proxy
+      - traefik.http.routers.api.rule=Host(`monitor.docker`)
+      - traefik.http.routers.api.entrypoints=web
+      - traefik.http.routers.api.service=api@internal
+      - traefik.http.routers.traefik.rule=Host(`3.11.230.233`)
+      - traefik.http.routers.traefik.entrypoints=web
+      - traefik.port=8080
+    networks:
+      - traefik-proxy
 
   sql:
     build: ./src/sql/
