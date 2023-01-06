@@ -553,8 +553,20 @@ router.get(
 router.get(
 	'/products/cctv/cctv-recording-analytics',
 	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('cctv-recording', { breadcrumbs: req.breadcrumbs });
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = "SELECT * FROM nvr_info WHERE `monitor_type` != 'station' ";
+			data = await dbQuery.genericQuery(sqlQuery);
+			// res.send(data);
+			// return;
+			res.render('cctv-recording', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 );
 
@@ -562,11 +574,59 @@ router.get(
 // 	res.render('cctv-analytics');
 // });
 
+router.get('/products/cctv/...', breadcrumbs.Middleware(), async (req, res) => {
+	try {
+		let data = {};
+		let sqlQuery = 'SELECT * FROM ...';
+		data = await dbQuery.genericQuery(sqlQuery);
+		// res.send(data);
+		// return;
+		res.render('...', {
+			data: data,
+			breadcrumbs: req.breadcrumbs
+		});
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 router.get(
-	'/products/cctv/cctv-ancillaries',
+	'/products/cctv/cctv-accessories',
 	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('cctv-ancillaries', { breadcrumbs: req.breadcrumbs });
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = 'SELECT * FROM acc_info';
+			data = await dbQuery.genericQuery(sqlQuery);
+			// res.send(data);
+			// return;
+			res.render('cctv-accessories', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+router.get(
+	'/products/cctv/cctv-recording-analytics/storage',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = 'SELECT * FROM nvr_disk_info';
+			data = await dbQuery.genericQuery(sqlQuery);
+			// res.send(data);
+			// return;
+			res.render('nvr-disk', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 );
 
@@ -575,6 +635,26 @@ router.get(
 	breadcrumbs.Middleware(),
 	(req, res) => {
 		res.render('management-software', { breadcrumbs: req.breadcrumbs });
+	}
+);
+
+router.get(
+	'/products/cctv/marine-grade-cables',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = 'SELECT * FROM nvr_disk_info';
+			data = await dbQuery.genericQuery(sqlQuery);
+			// res.send(data);
+			// return;
+			res.render('nvr-disk', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 );
 
