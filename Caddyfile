@@ -1,0 +1,5 @@
+http:// 3.11.230.233/ {
+	reverse_proxy node-app:3030 {
+		
+	}
+}

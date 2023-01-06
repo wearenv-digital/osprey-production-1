@@ -517,11 +517,24 @@ router.get('/products/cctv/cameras', breadcrumbs.Middleware(), (req, res) => {
 	res.render('cameras', { breadcrumbs: req.breadcrumbs });
 });
 
+//  CAMERA HOUSINGS PAGE
+
 router.get(
 	'/products/cctv/camera-housings',
 	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('camera-housings', { breadcrumbs: req.breadcrumbs });
+	async (req, res) => {
+		try {
+			let data = {};
+			let sqlQuery = 'SELECT * FROM `housings_info`';
+			data = await dbQuery.genericQuery(sqlQuery);
+
+			res.render('camera-housings', {
+				data: data,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	}
 );
 

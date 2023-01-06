@@ -1,8 +1,5 @@
 version: '3.7'
 
-volumes:
-  data:
-
 networks:
   traefik-proxy:
     name: traefik-proxy
@@ -13,6 +10,7 @@ services:
 
   node-app:
     container_name: node-app
+    restart: unless-stopped
     build:
       context: .
       args:
@@ -53,7 +51,7 @@ services:
   traefik:
     container_name: traefik
     image: traefik:v2.4
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
       - 8080
@@ -86,7 +84,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./db:/var/lib/mysql
+      - ./src/sql/mysql:/var/lib/mysql
       - ./src/sql/logs:/var/log/*
     networks:
       traefik-proxy:
@@ -95,16 +93,17 @@ services:
 
   phpmyadmin:
     container_name: php_myadmin
-    restart: always
+    restart: unless-stopped
     image: phpmyadmin:latest
     depends_on:
       - sql
     environment:
       PMA_ARBITRARY: 1
       PMA_HOST: sql
-      PMA_USER: $DB_USER
-      PMA_PASSWORD: $DB_PASSWORD
+      PMA_USER: root
+      PMA_PASSWORD: $SQL_ROOT_PASSWORD
       MYSQL_ROOT_PASSWORD: $SQL_ROOT_PASSWORD
+      UPLOAD_LIMIT: 300M
     networks:
       - traefik-proxy
     labels:

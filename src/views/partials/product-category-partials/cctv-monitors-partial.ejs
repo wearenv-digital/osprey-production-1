@@ -1,0 +1,18 @@
+<div id="monitors" class="product-card-holder cctv-monitors" data-ix="fade-on-scroll-2">
+	<% data.forEach(function(el){ %>
+		<div class="individual-product product-card" id="main-categoriesId">
+			<a href="<%= `/products/cctv/cctv-monitors/${el.product_code}` %>">
+				<div class="product-image">
+					<img class="product-list-image" src="<%=`${el.image}` %>" alt="">
+				</div>
+				<br>
+				<%= el.product_name %>
+					<%- console.log(el.product_name) %>
+						<br> <br>
+						<span class="product_code">
+							<%= el.product_code %>
+						</span>
+			</a>
+		</div>
+		<% }) %>
+</div>

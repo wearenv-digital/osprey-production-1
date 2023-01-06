@@ -3558,6 +3558,18 @@ td.val-data {
 	width: 24.5%
 }
 
+.product-card-holder {
+	display: flex;
+	gap: 30px;
+}
+
+.individual-product {
+	width: 33%;
+	margin-bottom: 20px;
+	padding-top: 0;
+	padding-bottom: 0
+}
+
 .category-img {
 	padding-top: 90px;
 	padding-bottom: 90px;

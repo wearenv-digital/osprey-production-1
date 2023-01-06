@@ -1,7 +1,6 @@
 version: '3.7'
 
 volumes:
-  db-data:
   caddy_data:
     external: true
   caddy_config:
@@ -16,6 +15,7 @@ services:
 
   node-app:
     container_name: node-app
+    restart: unless-stopped
     build:
       context: .
       args:
@@ -72,7 +72,7 @@ services:
   traefik:
     container_name: traefik
     image: traefik:v2.4
-    restart: always
+    restart: unless-stopped
     ports:
       - 80:80
       - 8080
