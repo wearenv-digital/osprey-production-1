@@ -3567,6 +3567,12 @@ td.val-data {
 	gap: 30px;
 }
 
+.product-card-holder.cctv-ethernet,
+.product-card-holder.cctv-marine-cable {
+	flex-wrap: nowrap;
+}
+
+
 .individual-product {
 	width: 33%;
 	margin-bottom: 20px;

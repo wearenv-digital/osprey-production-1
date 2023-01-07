@@ -5,6 +5,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 async function getAllInfo(req) {
 	try {
 		results = await db.id('SELECT * FROM info WHERE product_code = ?', [
@@ -110,6 +111,18 @@ async function getCerts(req) {
 	}
 }
 
+async function getData(sqlQuery,params) {
+	try {
+		let results = await db.id(sqlQuery, params);
+		return results;
+	} catch (e) {
+		console.log(e);
+		const status = 500;
+		return status;
+	}
+}
+
+
 
 async function genericQuery(sqlQuery) {
 	try {
@@ -130,5 +143,6 @@ module.exports = {
 	getPhysical,
 	getPower,
 	getCerts,
-	genericQuery
+	genericQuery,
+	getData
 };

@@ -419,7 +419,7 @@ router.get(
 			// return;
 			// console.log(av.length);
 
-			res.render('product-page-with-partials', {
+			res.render('product-pages/main-prod-page', {
 				data: finalObj,
 				av: finalAV,
 				movement: finalMovement,
@@ -429,6 +429,348 @@ router.get(
 				features: featuresArray,
 				breadcrumbs: req.breadcrumbs
 			});
+		} catch (e) {
+			console.log(e);
+			return res.render('index');
+		}
+	}
+);
+
+// more product routes
+
+router.get(
+	'/products/cctv/cctv-transmission/:product_code',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let info = await dbQuery.getData(
+				'SELECT * FROM `eth_info` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let features = await dbQuery.getData(
+				'SELECT * FROM `ethernet_features` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let interface = await dbQuery.getData(
+				'SELECT * FROM `ethernet_interface` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let eth_interface = await dbQuery.getData(
+				'SELECT * FROM `ethernet_eth_interface` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let led = await dbQuery.getData(
+				'SELECT * FROM `ethernet_led` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let onboard = await dbQuery.getData(
+				'SELECT * FROM `ethernet_onboard` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let physical = await dbQuery.getData(
+				'SELECT * FROM `ethernet_physical` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+			let power = await dbQuery.getData(
+				'SELECT * FROM `ethernet_power` WHERE product_code = ?',
+				[req.params.product_code]
+			);
+
+			// features = features[0];
+			interface = interface[0];
+			eth_interface = eth_interface[0];
+			led = led[0];
+			onboard = onboard[0];
+			physical = physical[0];
+			power = power[0];
+
+			let noConcat = controllers.removeProp(features, `features_concat`);
+
+			noConcat = controllers.removeFirst(noConcat);
+
+			noConcat = noConcat[0];
+
+			// keys
+
+			let allFeatureKeys = controllers.listAllKeys(noConcat);
+			let allInterfaceKeys = controllers.listAllKeys(interface);
+			let allEthInterfaceKeys = controllers.listAllKeys(eth_interface);
+			let allLedKeys = controllers.listAllKeys(led);
+			let allOnboardKeys = controllers.listAllKeys(onboard);
+			let allPhysicalKeys = controllers.listAllKeys(physical);
+			let allPowerKeys = controllers.listAllKeys(power);
+
+			// dead keys
+
+			let deadFeaturekeys = controllers.filterDead(noConcat);
+			let deadInterfaceK = controllers.filterDead(interface);
+			let deadEthInterfaceK = controllers.filterDead(eth_interface);
+			let deadLedKeys = controllers.filterDead(led);
+			let deadOnboardKeys = controllers.filterDead(onboard);
+			let deadPhysicalKeys = controllers.filterDead(physical);
+			let deadPowerKeys = controllers.filterDead(power);
+
+			// new keys
+
+			let newFeaturesOnlyKeys = allFeatureKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadFeaturekeys.length; i++) {
+					if (value === deadFeaturekeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newInterfaceKeys = allInterfaceKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadInterfaceK.length; i++) {
+					if (value === deadInterfaceK[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newEthKeys = allEthInterfaceKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadEthInterfaceK.length; i++) {
+					if (value === deadEthInterfaceK[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newLedKeys = allLedKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadLedKeys.length; i++) {
+					if (value === deadLedKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newOBKeys = allOnboardKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadOnboardKeys.length; i++) {
+					if (value === deadOnboardKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPhysKeys = allPhysicalKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPhysicalKeys.length; i++) {
+					if (value === deadPhysicalKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPowerKeys = allPowerKeys.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < deadPowerKeys.length; i++) {
+					if (value === deadPowerKeys[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			// values
+
+			let allFeatureVals = controllers.listAllVals(noConcat);
+			let allInterfaceVals = controllers.listAllVals(interface);
+			let allIntEthVals = controllers.listAllVals(eth_interface);
+			let allLedVals = controllers.listAllVals(led);
+			let allOBVals = controllers.listAllVals(onboard);
+			let allPowerVals = controllers.listAllVals(power);
+			let allPhysVals = controllers.listAllVals(physical);
+			let constDeadVals = ['*', 'n/a', ''];
+
+			// new vals
+
+			let newFeaturesOnlyVals = allFeatureVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newIntVals = allInterfaceVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newEthIntVals = allIntEthVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newLedVals = allLedVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newOBVals = allOBVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPhysVals = allPhysVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let newPowerVals = allPowerVals.reduce(function (prev, value) {
+				var isDuplicate = false;
+				for (var i = 0; i < constDeadVals.length; i++) {
+					if (value === constDeadVals[i]) {
+						isDuplicate = true;
+						break;
+					}
+				}
+				if (!isDuplicate) {
+					prev.push(value);
+				}
+				return prev;
+			}, []);
+
+			let finalInterface = Object.fromEntries(
+				newInterfaceKeys.map((a, i) => [a, newIntVals[i]])
+			);
+
+			let finalEthInt = Object.fromEntries(
+				newEthKeys.map((a, i) => [a, newEthIntVals[i]])
+			);
+
+			let finalLED = Object.fromEntries(
+				newLedKeys.map((a, i) => [a, newLedVals[i]])
+			);
+
+			let finalOB = Object.fromEntries(newOBKeys.map((a, i) => [a, newOBVals[i]]));
+
+			let finalPhys = Object.fromEntries(
+				newPhysKeys.map((a, i) => [a, newPhysVals[i]])
+			);
+			let finalPower = Object.fromEntries(
+				newPowerKeys.map((a, i) => [a, newPowerVals[i]])
+			);
+
+			let finalObj = {};
+
+			// res.send(finalInterface)
+			// return
+
+			finalObj.info = info;
+			finalObj.features = newFeaturesOnlyVals;
+			finalObj.interface = finalInterface;
+			finalObj.ethInt = finalEthInt;
+			finalObj.LED = finalLED;
+			finalObj.OB = finalOB;
+			finalObj.physical = finalPhys;
+			finalObj.power = finalPower;
+
+			// res.send(finalEthInt)
+			// return
+
+			res.render('product-pages/ethernet-product-page', {
+				data: finalObj,
+				features: newFeaturesOnlyVals,
+				interface: finalInterface,
+				ethInt: finalEthInt,
+				OB: finalOB,
+				LED: finalLED,
+				phys: finalPhys,
+				power: finalPower,
+				breadcrumbs: req.breadcrumbs,
+		})
+
 		} catch (e) {
 			console.log(e);
 			return res.render('index');
@@ -540,14 +882,6 @@ router.get(
 
 // ////////////////
 
-router.get(
-	'/products/cctv/cctv-transmission',
-	breadcrumbs.Middleware(),
-	(req, res) => {
-		res.render('cctv-transmission', { breadcrumbs: req.breadcrumbs });
-	}
-);
-
 // ////////////////
 
 router.get(
@@ -637,6 +971,29 @@ router.get(
 		res.render('management-software', { breadcrumbs: req.breadcrumbs });
 	}
 );
+
+router.get(
+	'/products/cctv/cctv-transmission',
+	breadcrumbs.Middleware(),
+	async (req, res) => {
+		try {
+			let ethData = {};
+			let cableData = {};
+			ethData = await dbQuery.genericQuery('SELECT * FROM eth_info');
+			cableData = await dbQuery.genericQuery('SELECT * FROM cables_all');
+
+			res.render('cctv-transmission', {
+				ethData: ethData,
+				cableData: cableData,
+				breadcrumbs: req.breadcrumbs
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+// marine cables
 
 router.get(
 	'/products/cctv/marine-grade-cables',
