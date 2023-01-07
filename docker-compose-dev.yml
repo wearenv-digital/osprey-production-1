@@ -1,11 +1,5 @@
 version: '3.7'
 
-volumes:
-  caddy_data:
-    external: true
-  caddy_config:
-    external: true
-
 networks:
   traefik-proxy:
   backend:
