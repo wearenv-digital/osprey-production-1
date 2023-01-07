@@ -5,7 +5,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const app = express();
 
-const productRoute = require('./src/routes/prodPageRoutes')
+const productRoute = require('./src/routes/prodPageRoutes');
 
 const PORT = process.env.PORT || 3030;
 
@@ -31,9 +31,7 @@ const middlewareCheck = (req, res, next) => {
 
 app.use('/public', express.static('./src/public'));
 
-
 app.use(require('./src/routes/routes'));
-app.use(require(productRoute));
 
 // const transporter = nodemailer.createTransport({
 // 	service: 'smtp.ionos.co.uk',
