@@ -108,17 +108,19 @@ services:
         aliases:
           - test.sql.docker
 
-nginx:
-    container_name: nginx
-    image: nginx
-    restart: unless-stopped
-    networks:
-      - nginx
-    labels:
-      - traefik.enable=true
-      - traefik.port=80
-      - traefik.http.routers.nginx.rule=Host(`3.11.230.233/`)
-      - traefik.http.routers.nginx.entrypoints=web
+# nginx:
+#     container_name: nginx
+#     image: nginx
+#     restart: unless-stopped
+#     networks:
+#       - nginx
+#     volumes:
+#       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+#     labels:
+#       - traefik.enable=true
+#       - traefik.port=80
+#       - traefik.http.routers.nginx.rule=Host(`3.11.230.233/`)
+#       - traefik.http.routers.nginx.entrypoints=web
 
 
 
