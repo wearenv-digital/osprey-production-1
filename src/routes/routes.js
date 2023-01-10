@@ -487,6 +487,16 @@ router.get(
 			let noConcat = controllers.removeProp(features, `features_concat`);
 
 			noConcat = controllers.removeFirst(noConcat);
+			// res.send(noConcat);
+			// return;
+			interface = controllers.noCode(interface);
+			eth_interface = controllers.noCode(eth_interface);
+			led = controllers.noCode(led);
+			onboard = controllers.noCode(onboard);
+			physical = controllers.noCode(physical);
+			power = controllers.noCode(power);
+
+			// res.send(noConcat);
 
 			noConcat = noConcat[0];
 
@@ -621,6 +631,9 @@ router.get(
 			let allPhysVals = controllers.listAllVals(physical);
 			let constDeadVals = ['*', 'n/a', ''];
 
+			// res.send(allFeatureVals);
+			// return
+
 			// new vals
 
 			let newFeaturesOnlyVals = allFeatureVals.reduce(function (prev, value) {
@@ -636,6 +649,9 @@ router.get(
 				}
 				return prev;
 			}, []);
+
+			// res.send(newFeaturesOnlyVals);
+			// return
 
 			let newIntVals = allInterfaceVals.reduce(function (prev, value) {
 				var isDuplicate = false;
@@ -744,8 +760,22 @@ router.get(
 
 			let finalObj = {};
 
+			// let intVal = Object.values(interface);
+			// let intKey = Object.keys(interface)
+			// res.send(intKey);
+			// return;
+			// res.send(intVal);
+
+			// res.send(finalPower)
+			// return
+
 			// res.send(finalInterface)
 			// return
+
+			// res.send(finalInterface);
+			// return;
+
+			info = info[0];
 
 			finalObj.info = info;
 			finalObj.features = newFeaturesOnlyVals;
@@ -756,11 +786,21 @@ router.get(
 			finalObj.physical = finalPhys;
 			finalObj.power = finalPower;
 
-			// res.send(finalEthInt)
+			// res.send(info.description);
+			// return;
+
+			// res.send(finalObj);
+			// return;
+
+			// res.send(info)
 			// return
+
+			// res.send(newFeaturesOnlyVals);
+			// return;
 
 			res.render('product-pages/ethernet-product-page', {
 				data: finalObj,
+				info: info,
 				features: newFeaturesOnlyVals,
 				interface: finalInterface,
 				ethInt: finalEthInt,
@@ -768,9 +808,8 @@ router.get(
 				LED: finalLED,
 				phys: finalPhys,
 				power: finalPower,
-				breadcrumbs: req.breadcrumbs,
-		})
-
+				breadcrumbs: req.breadcrumbs
+			});
 		} catch (e) {
 			console.log(e);
 			return res.render('index');

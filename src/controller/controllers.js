@@ -20,12 +20,17 @@ function removeFirst(obj) {
 	return obj;
 }
 
+function noCode(obj) {
+	delete obj.product_code;
+	return obj;
+}
+
 function removeProductCode(obj) {
 	delete obj['product_code'];
 	return obj;
 }
 
-function removeProp(obj,key) {
+function removeProp(obj, key) {
 	delete obj[0][key];
 	return obj;
 }
@@ -195,6 +200,7 @@ module.exports = {
 	removeFirst,
 	removeProdCode,
 	removeProductCode,
+	noCode,
 	removeProp,
 	finalObjCreator,
 	filterDead,

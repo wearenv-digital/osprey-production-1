@@ -229,11 +229,13 @@
 																			<% certsVal=Object.values(certs); %>
 																				<% certs=Object.keys(certs); %>
 																					<% for( let i=0; i < certs.length; i++ ) { %>
+																						<%- console.log(certs) %>
 																		<tr class="spec-row">
 																			<td class="key-data elec-keys">
 																				<%= certs[i] %>
 																			</td>
 																			<td class="val-data elec-vals">
+																				<%- console.log(certsVal) %> 
 																				<%= certsVal[i] %>
 																			</td>
 																		</tr>

@@ -6,6 +6,7 @@
 ./db/*
 db/
 
+mysql.sock
 
 build.sh
 deploy.sh
